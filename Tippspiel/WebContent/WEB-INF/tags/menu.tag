@@ -16,6 +16,7 @@
             <li<c:if test="${forward eq 'personlist' }"> class="active"</c:if>><a href="<c:url value="/personlist.html"/>">Userlist</a></li>
             <li<c:if test="${forward eq 'register' }"> class="active"</c:if>><a href="<c:url value="/register.html"/>">Register</a></li>
             <li<c:if test="${forward eq 'change' }"> class="active"</c:if>><a href="<c:url value="/change.html"/>">Daten ändern</a></li>
+            <li<c:if test="${forward eq 'groups' }"> class="active"</c:if>><a href="<c:url value="/groups.html"/>">Gruppen</a></li>
             <li><a href="<c:url value="/contact.jsp"/>">Kontakt</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

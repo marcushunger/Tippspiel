@@ -79,8 +79,17 @@
 		<servlet-name>change</servlet-name>
 		<url-pattern>/j_change_user</url-pattern>
 	</servlet-mapping>
-	<servlet>
 	
+	<servlet>
+		<servlet-name>groups</servlet-name>
+		<servlet-class>de.fom.tippspiel.controller.GroupsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>groups</servlet-name>
+		<url-pattern>/j_change_groups</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>de.fom.tippspiel.controller.DispatcherServlet</servlet-class>
 		<!-- <load-on-startup>1</load-on-startup> -->
