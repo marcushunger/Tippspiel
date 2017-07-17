@@ -3,11 +3,14 @@ package de.fom.tippspiel.dao;
 import java.util.List;
 
 import de.fom.tippspiel.controller.DaoException;
+import de.fom.tippspiel.persistence.Studiengang;
 import de.fom.tippspiel.persistence.User;
 
 public interface PersonDao {
 
 	public User read(Integer id) throws DaoException;
+
+	public Studiengang readStudiengang(Integer id) throws DaoException;
 
 	public void save(User p) throws DaoException;
 
@@ -26,5 +29,7 @@ public interface PersonDao {
 
 	// public List<Gruppe> gruppenList();
 	public boolean checkEmail(String value, int id) throws DaoException;
+
+	public void register(String bezeichnung, User user, Studiengang studiengang) throws DaoException;
 
 }

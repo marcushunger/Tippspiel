@@ -20,7 +20,7 @@ public class ChangeServlet extends HttpServlet {
 
 	@Inject
 	private PersonDao personDao;
-	
+
 	// private static final String loginsql = "select * from wp.person p where
 	// p.email = ? and p.passphrase_sha2_salted = sha2(CONCAT(?, salt), 512)";
 
@@ -33,8 +33,8 @@ public class ChangeServlet extends HttpServlet {
 			InitialContext initialContext = new InitialContext();
 			@SuppressWarnings("unused")
 			DataSource wp = (DataSource) initialContext.lookup(s);
-			//wp = (DataSource)config.getServletContext().getAttribute("ds");
-			//personDao = new JdbcPersonDao(wp);
+			// wp = (DataSource)config.getServletContext().getAttribute("ds");
+			// personDao = new JdbcPersonDao(wp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,14 +42,15 @@ public class ChangeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			User cP = (User) request.getSession().getAttribute("user");
-			cP = personDao.update(cP, request.getParameter("username"),request.getParameter("email"), request.getParameter("passphrase"));
+		User cP = (User) request.getSession().getAttribute("user");
+		cP = personDao.update(cP, request.getParameter("username"), request.getParameter("email"),
+				request.getParameter("passphrase"));
 
-			if (cP != null) {
-				request.getSession().setAttribute("user", cP);
-				response.sendRedirect(request.getContextPath() + "/home.html");
-				return;
-			}
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		if (cP != null) {
+			request.getSession().setAttribute("user", personDao.read(cP.getId()));
+			response.sendRedirect(request.getContextPath() + "/home.html");
+			return;
+		}
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 }

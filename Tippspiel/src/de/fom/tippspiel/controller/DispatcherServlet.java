@@ -113,6 +113,7 @@ public class DispatcherServlet extends HttpServlet {
 
 	private String listGroups(HttpServletRequest request) throws DaoException {
 		String forward;
+		request.setAttribute("user", (User) request.getSession().getAttribute("user"));
 		request.setAttribute("gruppenlist", ((User) request.getSession().getAttribute("user")).getGruppen());
 		forward = "groups";
 		return forward;

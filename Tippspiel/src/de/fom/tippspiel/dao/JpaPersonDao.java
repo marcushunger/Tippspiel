@@ -9,6 +9,8 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import de.fom.tippspiel.controller.DaoException;
+import de.fom.tippspiel.persistence.Gruppe;
+import de.fom.tippspiel.persistence.Studiengang;
 import de.fom.tippspiel.persistence.User;
 
 @Transactional
@@ -25,6 +27,16 @@ public class JpaPersonDao implements PersonDao {
 		// WHERE p.id = :id", User.class);
 		// return query.setParameter("id", id).getSingleResult();
 		return manager.find(User.class, id);
+	}
+
+	@Override
+	public Studiengang readStudiengang(Integer id) throws DaoException {
+
+		// TypedQuery<Studiengang> query = manager.createQuery("select * from
+		// Studiengang p WHERE p.id = :id",
+		// Studiengang.class);
+		// return query.setParameter("id", id).getSingleResult();
+		return manager.find(Studiengang.class, id);
 	}
 
 	@Override
@@ -126,5 +138,16 @@ public class JpaPersonDao implements PersonDao {
 			return false;
 		}
 
+	}
+
+	@Override
+	public void register(String bezeichnung, User user, Studiengang studiengang) throws DaoException {
+		User u = user;
+		Gruppe g = new Gruppe();
+
+		g.setBezeichnung(bezeichnung);
+		g.setStudiengang(studiengang);
+		u.getGruppen().add(g);
+		manager.merge(u);
 	}
 }

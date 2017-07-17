@@ -1,5 +1,6 @@
 package de.fom.tippspiel.persistence;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //weil autoincrement
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // weil autoincrement
 	private Integer id;
 	private String email;
 	private String username;
@@ -25,20 +26,14 @@ public class User {
 	private char[] passphrase_sha2;
 	private char[] passphrase_sha2_salted;
 	private String salt;
-	 @ManyToMany
-	 @JoinTable(name="usergruppe", joinColumns=
-	            @JoinColumn(name="fiduser", referencedColumnName="id"),
-	            inverseJoinColumns=
-	            @JoinColumn(name="fidgruppe", referencedColumnName="id"))
-	private List<Gruppe> gruppen;
-	 
 	@ManyToMany
-	@JoinTable(name="usermodul", joinColumns=
-	            @JoinColumn(name="fiduser", referencedColumnName="id"),
-	            inverseJoinColumns=
-	            @JoinColumn(name="fidmodul", referencedColumnName="id"))
-	private List<Modul> module;
-	
+	@JoinTable(name = "usergruppe", joinColumns = @JoinColumn(name = "fiduser", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "fidgruppe", referencedColumnName = "id"))
+	private List<Gruppe> gruppen = new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(name = "usermodul", joinColumns = @JoinColumn(name = "fiduser", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "fidmodul", referencedColumnName = "id"))
+	private List<Modul> module = new ArrayList<>();
+
 	public User() {
 	}
 
@@ -46,13 +41,13 @@ public class User {
 		this.setEmail(email);
 		this.passphrase = passphrase;
 	}
-	
+
 	public User(Integer id, String email, String firstname, String lastname, Date birthday) {
 		this.id = id;
 		this.setEmail(email);
-//		this.firstname = firstname;
-//		this.lastname = lastname;
-//		this.birthday = birthday;
+		// this.firstname = firstname;
+		// this.lastname = lastname;
+		// this.birthday = birthday;
 	}
 
 	public User(Integer id, String firstname, String lastname, String email, Date birthday, Double height,
@@ -60,14 +55,13 @@ public class User {
 		this.id = id;
 		this.username = firstname;
 		this.setEmail(email);
-//		this.birthday = birthday;
-//		this.height = height;
-//		this.companyid = companyid;
-//		this.comment = comment;
-//		this.newsletter = newsletter;
+		// this.birthday = birthday;
+		// this.height = height;
+		// this.companyid = companyid;
+		// this.comment = comment;
+		// this.newsletter = newsletter;
 	}
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -75,7 +69,6 @@ public class User {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -124,7 +117,7 @@ public class User {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	
+
 	public List<Gruppe> getGruppen() {
 		return gruppen;
 	}
@@ -132,6 +125,5 @@ public class User {
 	public void setGruppen(List<Gruppe> gruppen) {
 		this.gruppen = gruppen;
 	}
-	
-	
+
 }

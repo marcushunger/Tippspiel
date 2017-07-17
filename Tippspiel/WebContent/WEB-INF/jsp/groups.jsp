@@ -27,12 +27,23 @@
 			</c:forEach>
 		</tbody>
 		</table>
-		 <form class="form-signin" method="post" action="j_change_groups">
-		
-        <h2 class="form-signin-heading">Neue Gruppe</h2>
-        <label for="inputBezeichnung" class="sr-only">Bezeichnung</label>
-        <input type="text" name="j_bezeichnung" id="bezeichnung" class="form-control" placeholder="Name" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Gruppe anlegen</button>
-      </form>
+		  <body>
+	<c:forEach items="${errors}" var="e">
+	${e.message }<br/>
+	</c:forEach>
+
+
+		<form method="post" action="j_change_groups">
+			<input type="hidden" name="id" value="">
+			
+			<p><label for="bez">username</label><br/>
+			<input type="text" name="bez" id="bez" value="Bezeichnung"></p>
+			
+			
+		<p>* required</p>
+		<input type="submit" class="btn btn-default" value="Gruppe Anlegen" name="groups">
+		</form>
+	</body>
+</html>
 	</jsp:body>
 </my:base>
