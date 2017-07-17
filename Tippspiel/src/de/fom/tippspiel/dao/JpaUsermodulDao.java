@@ -9,11 +9,13 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import de.fom.tippspiel.controller.DaoException;
+import de.fom.tippspiel.persistence.Modul;
+import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.persistence.Usermodul;
 
 @Transactional
 @Alternative
-public class JpaUsermodulDao implements UsermodulDao{
+public class JpaUsermodulDao implements UsermodulDao {
 
 	@Inject
 	private EntityManager manager;
@@ -21,10 +23,22 @@ public class JpaUsermodulDao implements UsermodulDao{
 	@Override
 	public List<Usermodul> list(Integer id) throws DaoException {
 
-		TypedQuery<Usermodul> queryLogin = manager.createQuery("select u from Usermodul u WHERE u.user.id = :id", Usermodul.class);
+		TypedQuery<Usermodul> queryLogin = manager.createQuery("select u from Usermodul u WHERE u.user.id = :id",
+				Usermodul.class);
 		queryLogin.setParameter("id", id);
 		List<Usermodul> usermodule = queryLogin.getResultList();
 		return usermodule;
+	}
+
+	@Override
+	public void tippEintragen(Modul m, double tipp, User u) throws DaoException {
+		User user = u;
+		Usermodul um = new Usermodul();
+		um.setModul(m);
+		um.setNoteTipp(tipp);
+		um.setUser(user);
+		user.getModule().add(um);
+		manager.merge(user);
 	}
 
 }
