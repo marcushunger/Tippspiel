@@ -17,6 +17,8 @@
             <li<c:if test="${forward eq 'register' }"> class="active"</c:if>><a href="<c:url value="/register.html"/>">Register</a></li>
             <li<c:if test="${forward eq 'change' }"> class="active"</c:if>><a href="<c:url value="/change.html"/>">Daten ändern</a></li>
             <li<c:if test="${forward eq 'groups' }"> class="active"</c:if>><a href="<c:url value="/groups.html"/>">Gruppen</a></li>
+            <li<c:if test="${forward eq 'noteeintragen' }"> class="active"</c:if>><a href="<c:url value="/noteeintragen.html"/>">Note eintragen</a></li>
+            <li<c:if test="${forward eq 'doku' }"> class="active"</c:if>><a href="<c:url value="/doku.html"/>">Doku</a></li>
             <li><a href="<c:url value="/contact.jsp"/>">Kontakt</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

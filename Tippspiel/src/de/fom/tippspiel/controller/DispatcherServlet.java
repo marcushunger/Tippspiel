@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -18,19 +19,22 @@ import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
 
-import de.fom.tippspiel.dao.JdbcMasterDataDao;
-import de.fom.tippspiel.dao.MasterDataDao;
 import de.fom.tippspiel.dao.PersonDao;
+import de.fom.tippspiel.dao.UsermodulDao;
 import de.fom.tippspiel.model.ChangeForm;
+import de.fom.tippspiel.model.NoteeintragenForm;
+import de.fom.tippspiel.persistence.Modul;
 import de.fom.tippspiel.persistence.User;
+import de.fom.tippspiel.persistence.Usermodul;
 
 //@WebServlet(urlPatterns="*.html")
 public class DispatcherServlet extends HttpServlet {
 
 	@Inject
 	private PersonDao personDao;
-	@SuppressWarnings("unused")
-	private MasterDataDao masterDataDao;
+
+	@Inject
+	private UsermodulDao usermodulDao;
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +47,7 @@ public class DispatcherServlet extends HttpServlet {
 			DataSource wp = (DataSource) initialContext.lookup(s);
 			// personDao = new JdbcPersonDao(wp); //Auskommentiert weil
 			// PersonDao injected wird
-			masterDataDao = new JdbcMasterDataDao(wp);
+			// masterDataDao = new JdbcMasterDataDao(wp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,6 +91,21 @@ public class DispatcherServlet extends HttpServlet {
 			break;
 		case "personlist":
 			forward = list(request);
+			break;
+		case "noteeintragen":
+			forward = "noteeintragen";
+			List<Usermodul> listeUsermodule = usermodulDao.list(12);
+			System.out.println("Lukas usermodule: " + listeUsermodule.size());
+			request.setAttribute("noteeintragen", ((User) request.getSession().getAttribute("user")).getModule());
+			request.setAttribute("usermodule", listeUsermodule);
+			List<Modul> u = ((User) request.getSession().getAttribute("user")).getModule();
+			System.out.println(u.size());
+
+			NoteeintragenForm nform = new NoteeintragenForm(request, listeUsermodule);
+			request.setAttribute("nform", nform);
+			break;
+		case "doku":
+			forward = "doku";
 			break;
 		case "logout":
 			request.getSession().invalidate();

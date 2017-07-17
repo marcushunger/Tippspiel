@@ -8,5 +8,6 @@
 	</alternatives> -->
 	<alternatives>
 	<class>de.fom.tippspiel.dao.JpaPersonDao</class>
+	<class>de.fom.tippspiel.dao.JpaUsermodulDao</class>
 	</alternatives>
 </beans>

@@ -90,6 +90,16 @@
 		<url-pattern>/j_change_groups</url-pattern>
 	</servlet-mapping>
 	<servlet>
+	
+
+    <servlet-name>noteneintragen</servlet-name>
+    <servlet-class>de.fom.tippspiel.controller.NotenEintragenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noteneintragen</servlet-name>
+    <url-pattern>/j_noten_user</url-pattern>
+  </servlet-mapping>
+		 <servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>de.fom.tippspiel.controller.DispatcherServlet</servlet-class>
 		<!-- <load-on-startup>1</load-on-startup> -->

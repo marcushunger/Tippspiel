@@ -126,4 +126,12 @@ public class User {
 		this.gruppen = gruppen;
 	}
 
+	public List<Modul> getModule() {
+		return module;
+	}
+
+	public void setModule(List<Modul> module) {
+		this.module = module;
+	}
+
 }

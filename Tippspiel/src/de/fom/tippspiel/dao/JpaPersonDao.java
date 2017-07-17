@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import de.fom.tippspiel.controller.DaoException;
 import de.fom.tippspiel.persistence.Gruppe;
 import de.fom.tippspiel.persistence.Studiengang;
@@ -45,16 +47,12 @@ public class JpaPersonDao implements PersonDao {
 		User p = new User();
 		p.setEmail(email);
 		p.setUsername(name);
-		p.setPassphrase(passwort);
-		// TODO richtige werte hashen aber es reicht dann einer + salt
-		// p.setPassphrase_md5("1d028378e12ca6bdafa3b8b21bc5a9ea".toCharArray());
-		p.setPassphrase_sha2(
-				"d739ed5b76982107147faa7883d4112f057e5a3b7efc137e2b9eb962e0f6cf395eee5e1c696f1113f29b29154dee55682a35088d7c599561ceb5f2654ff1c1aa"
-						.toCharArray());
-		p.setPassphrase_sha2_salted(
-				"b85a97216050884f0b20f8382063241daeff7a196322a3b68b7ce58290ac4786867f2e4069750fa2bf39d9175c3d2a6cb7be7fbc59165cd58976689c7e7dc328"
-						.toCharArray());
-		p.setSalt("8wk8Sr5Pd98B6yLwyzSK9qEe0EAEQ4AjogY1YE1OPbs=");
+		String salt = BCrypt.gensalt(12);
+		String passHash = BCrypt.hashpw(passwort, BCrypt.gensalt(12));
+		p.setPassphrase(passHash);
+		p.setSalt(salt);
+		p.setPassphrase_sha2_salted(passHash.toCharArray());
+		p.setPassphrase_sha2(passHash.toCharArray());
 
 		manager.persist(p);
 
@@ -100,21 +98,22 @@ public class JpaPersonDao implements PersonDao {
 	@Override
 	public User login(String email, String password) throws DaoException {
 
-		// TODO Passworthash nehmen aktuell einfacher Passwortvergleich ohne
-		// verschlüsselung
-		// JPA hat wohl keine sha2 funktion -
-		// TypedQuery<Person> queryLogin = manager.createQuery("select p from
-		// Person p WHERE p.email = :email and p.passphrase_sha2_salted =
-		// sha2(CONCAT(:password, p.salt), 512)", Person.class);
-		TypedQuery<User> queryLogin = manager
-				.createQuery("select p from User p WHERE p.email = :email and p.passphrase = :password", User.class);
+		TypedQuery<User> queryLogin = manager.createQuery("select p from User p WHERE p.email = :email", User.class);
 		queryLogin.setParameter("email", email);
-		queryLogin.setParameter("password", password);
-		try {
-			return queryLogin.getSingleResult();
-		} catch (Exception e) {
-			throw new DaoException("Login fehlgeschlagen", null);
+		User user = queryLogin.getSingleResult();
+
+		System.out.println("Lukas boolen: " + BCrypt.checkpw(password, queryLogin.getSingleResult().getPassphrase()));
+
+		if (user != null) {
+			if (BCrypt.checkpw(password, queryLogin.getSingleResult().getPassphrase())) {
+				return user;
+			}
+		} else {
+			// TODO Hier wäre eine Meldung gut, dass login nicht klappt ,
+			// passwort falsch
 		}
+
+		return null;
 
 	}
 
