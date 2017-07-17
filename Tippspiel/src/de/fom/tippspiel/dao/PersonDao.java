@@ -25,7 +25,7 @@ public interface PersonDao {
 	// TODO Passwort nicht als String schieben
 	public User register(String name, String email, String passwort) throws DaoException;
 
-	public User update(User p, String name, String email, String passwort) throws DaoException;
+	public User update(User p, String username, String email, String passwort) throws DaoException;
 
 	// public List<Gruppe> gruppenList();
 	public boolean checkEmail(String value, int id) throws DaoException;

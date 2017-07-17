@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import de.fom.tippspiel.dao.PersonDao;
 import de.fom.tippspiel.persistence.User;
 
@@ -42,15 +44,19 @@ public class ChangeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		User cP = (User) request.getSession().getAttribute("user");
-		cP = personDao.update(cP, request.getParameter("username"), request.getParameter("email"),
-				request.getParameter("passphrase"));
+		User u = (User) request.getSession().getAttribute("user");
 
-		if (cP != null) {
-			request.getSession().setAttribute("user", personDao.read(cP.getId()));
+		if (BCrypt.checkpw(request.getParameter("passphrasealt"), u.getPassphrase())) {
+
+			u = personDao.update(u, request.getParameter("username"), request.getParameter("emailalt"),
+					request.getParameter("passwortneu"));
+
+			request.getSession().setAttribute("user", personDao.read(u.getId()));
 			response.sendRedirect(request.getContextPath() + "/home.html");
 			return;
+		} else {
+			// TODO Fehler passwörter stimmen nicht über ein
 		}
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+
 	}
 }

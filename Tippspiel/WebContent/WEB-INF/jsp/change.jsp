@@ -6,7 +6,7 @@
 	Aendern der eigenen Daten
 	</jsp:attribute>
 	<jsp:attribute name="headline">
-	Welche Daten sollen geaendert werden
+	Daten ändern
 	</jsp:attribute>
 	<jsp:body>
 	<!DOCTYPE html>
@@ -18,10 +18,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>User Ändern</title>
-
+    <link rel="icon" href="../../favicon.ico">  
         <!-- Bootstrap core CSS -->
     <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
 	 </head>
@@ -30,27 +27,28 @@
 	<c:forEach items="${errors}" var="e">
 	${e.message }<br/>
 	</c:forEach>
+	
+	<div class="container">
+    <div class="row">
+<div class="col-sm-6">
 
 
 		<form method="post" action="j_change_user">
 			<input type="hidden" name="id" value="${cform.id}">
-			
-			<p><label for="email">email*</label><br/>
-			<%-- <input type="text" name="email" id="email" value="${form.email}" onblur="checkemail(this.value, '${form.id}')"> --%>
-			<input type="text" name="email" id="email" value="${cform.email}">
-			<img src="images/clear.gif" id="emailcheck"/>
-			</p>
-			
-			<p><label for="username">username</label><br/>
-			<input type="text" name="username" id="username" value="${cform.username}"></p>
-			
-			<p><label for="passphrase">passphrase</label><br/>
-			<input type="text" name="passphrase" id="passphrase" value="${cform.passphrase}"></p>
-			
-			
-		<p>* required</p>
-		<input type="submit" class="btn btn-default" value="save" name="change">
+			<input class="form-control" type="email" name="emailalt" id="emailalt" value="${cform.email}">
+			<br>
+			<input class="form-control" type="text" name="usernamealt" id="usernamealt" value="${cform.username}" placeholder="Username">
+			<br>
+			<input class="form-control" type="password" name="passphrasealt" id="passphrasealt" placeholder="Passowort alt">
+			<br>
+			<input class="form-control" type="password" name="passphraseneu" id="passphraseneu" placeholder="Passowort neu">
+			<br>
+			<input type="submit" class="btn btn-lg btn-primary btn-block" value="Daten speichern" name="change">
 		</form>
+		</div>
+		</div>
+		</div>
+		
 	</body>
 </html>
  		</jsp:body>
