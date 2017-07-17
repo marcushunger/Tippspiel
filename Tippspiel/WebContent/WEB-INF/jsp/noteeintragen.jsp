@@ -99,10 +99,10 @@
 			<c:forEach items="${nform.listeusermodule}" var="u">
 				<tr>
 					<!-- <td>${u.id}</td> -->
-					<td>${u.modul.bezeichnung}</td>
+					<%-- <td>${u.modul.bezeichnung}</td>
 					<td>${u.notetipp}</td>
-					<td>${u.notereal}</td>
-					<!-- Problem das abweichung nicht in der liste --><td>${nform.abweichung}</td>
+					<td>${u.notereal}</td> --%>
+					<!-- Problem das abweichung nicht in der liste <td>${nform.abweichung}</td>-->
 				</tr>
 			</c:forEach>
 		</tbody>

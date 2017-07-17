@@ -96,12 +96,14 @@ public class DispatcherServlet extends HttpServlet {
 			forward = "noteeintragen";
 			List<Usermodul> listeUsermodule = usermodulDao.list(12);
 			System.out.println("Lukas usermodule: " + listeUsermodule.size());
-			request.setAttribute("noteeintragen", ((User) request.getSession().getAttribute("user")).getModule());
+			request.setAttribute("noteeintragen", ((User) request.getSession().getAttribute("user")).getGruppen().get(0)
+					.getStudiengang().getModule());
 			request.setAttribute("usermodule", listeUsermodule);
-			List<Modul> u = ((User) request.getSession().getAttribute("user")).getModule();
+			List<Modul> u = ((User) request.getSession().getAttribute("user")).getGruppen().get(0).getStudiengang()
+					.getModule();
 			System.out.println(u.size());
 
-			NoteeintragenForm nform = new NoteeintragenForm(request, listeUsermodule);
+			NoteeintragenForm nform = new NoteeintragenForm(request, u);
 			request.setAttribute("nform", nform);
 			break;
 		case "doku":

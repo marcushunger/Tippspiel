@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -19,7 +21,9 @@ public class Studiengang {
 	private Integer id;
 	private String bezeichnung;
 	private String uni;
-	@ManyToMany(mappedBy = "studiengaenge")
+	@ManyToMany
+	@JoinTable(name = "studiengangmodul", joinColumns = @JoinColumn(name = "fidstudiengang", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "fidmodul", referencedColumnName = "id"))
+	// @ManyToMany(mappedBy = "studiengaenge")
 	private List<Modul> module = new ArrayList<>();
 
 	public List<Modul> getModule() {

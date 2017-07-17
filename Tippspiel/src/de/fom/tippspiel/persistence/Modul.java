@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -22,12 +21,15 @@ public class Modul {
 	private String bezeichnung;
 	private Integer creditpoints;
 
-	@ManyToMany
-	@JoinTable(name = "studiengangmodul", joinColumns = @JoinColumn(name = "fidgruppe", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "fidstudiengang", referencedColumnName = "id"))
+	// @ManyToMany
+	// @JoinTable(name = "studiengangmodul", joinColumns = @JoinColumn(name =
+	// "fidgruppe", referencedColumnName = "id"), inverseJoinColumns =
+	// @JoinColumn(name = "fidstudiengang", referencedColumnName = "id"))
+	@ManyToMany(mappedBy = "module")
 	private List<Studiengang> studiengaenge = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "module")
-	private List<User> user = new ArrayList<>();
+	@OneToMany(mappedBy = "modul")
+	private List<Usermodul> user = new ArrayList<>();
 
 	public Integer getCreditpoints() {
 		return creditpoints;
@@ -59,6 +61,14 @@ public class Modul {
 
 	public void setStudiengaenge(List<Studiengang> studiengaenge) {
 		this.studiengaenge = studiengaenge;
+	}
+
+	public List<Usermodul> getUser() {
+		return user;
+	}
+
+	public void setUser(List<Usermodul> user) {
+		this.user = user;
 	}
 
 }

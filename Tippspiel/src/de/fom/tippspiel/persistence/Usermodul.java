@@ -5,49 +5,61 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
 public class Usermodul {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //weil autoincrement
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // weil autoincrement
 	private Integer id;
-	private double noteTipp;
-	private double noteReal;
-	@JoinColumn(name="fiduser")
+	private double notetipp;
+	private double notereal;
+	@ManyToOne
+	@JoinColumn(name = "fiduser")
 	private User user;
-	@JoinColumn(name="fidmodul")
+	@ManyToOne
+	@JoinColumn(name = "fidmodul")
 	private Modul modul;
 
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public double getNoteTipp() {
-		return noteTipp;
+		return notetipp;
 	}
+
 	public void setNoteTipp(double noteTipp) {
-		this.noteTipp = noteTipp;
+		this.notetipp = noteTipp;
 	}
+
 	public double getNoteReal() {
-		return noteReal;
+		return notereal;
 	}
+
 	public void setNoteReal(double noteReal) {
-		this.noteReal = noteReal;
+		this.notereal = noteReal;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public Modul getModul() {
 		return modul;
 	}
+
 	public void setModul(Modul modul) {
 		this.modul = modul;
 	}
