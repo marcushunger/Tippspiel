@@ -48,8 +48,8 @@ public class ChangeServlet extends HttpServlet {
 
 		if (BCrypt.checkpw(request.getParameter("passphrasealt"), u.getPassphrase())) {
 
-			u = personDao.update(u, request.getParameter("username"), request.getParameter("emailalt"),
-					request.getParameter("passwortneu"));
+			u = personDao.update(u, request.getParameter("usernamealt"), request.getParameter("emailalt"),
+					request.getParameter("passphraseneu"));
 
 			request.getSession().setAttribute("user", personDao.read(u.getId()));
 			response.sendRedirect(request.getContextPath() + "/home.html");

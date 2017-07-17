@@ -1,12 +1,7 @@
 package de.fom.tippspiel.controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.inject.Inject;
 import javax.naming.InitialContext;
@@ -57,21 +52,10 @@ public class DispatcherServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Locale locale =
-		// Locale.forLanguageTag((String)request.getSession().getAttribute(LocaleFilter.KEY));
-		Locale locale = request.getLocale();
-		ResourceBundle bundle = ResourceBundle.getBundle("MessageResources", locale);
-		String pattern = bundle.getString("i18n.datepattern");
-		request.setAttribute("datepattern", pattern);
-		request.setAttribute("flag", "/images/flag_" + locale.getLanguage() + ".png");
-		DateFormat df = new SimpleDateFormat(pattern);
-		df.setLenient(false);
-		@SuppressWarnings("unused")
-		NumberFormat d = NumberFormat.getNumberInstance(locale);
-		// DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-		System.out.println(request.getRequestURI());
+		System.out.println("RequestURI: " + request.getRequestURI());
 		String[] sa = StringUtils.split(request.getServletPath(), "/.\\");
 		String forward = null;
+
 		switch (sa[0]) {
 		case "home":
 			forward = "home";
@@ -79,7 +63,6 @@ public class DispatcherServlet extends HttpServlet {
 		case "change":
 			forward = "change";
 			User cP = (User) request.getSession().getAttribute("user");
-			System.out.println(cP.getUsername());
 			ChangeForm cform = new ChangeForm(cP);
 			request.setAttribute("cform", cform);
 			break;
@@ -95,14 +78,11 @@ public class DispatcherServlet extends HttpServlet {
 		case "noteeintragen":
 			forward = "noteeintragen";
 			List<Usermodul> listeUsermodule = usermodulDao.list(12);
-			System.out.println("Lukas usermodule: " + listeUsermodule.size());
 			request.setAttribute("noteeintragen", ((User) request.getSession().getAttribute("user")).getGruppen().get(0)
 					.getStudiengang().getModule());
 			request.setAttribute("usermodule", listeUsermodule);
 			List<Modul> u = ((User) request.getSession().getAttribute("user")).getGruppen().get(0).getStudiengang()
 					.getModule();
-			System.out.println(u.size());
-
 			NoteeintragenForm nform = new NoteeintragenForm(request, u);
 			request.setAttribute("nform", nform);
 			break;
