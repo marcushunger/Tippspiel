@@ -1,8 +1,10 @@
 package de.fom.tippspiel.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.fom.tippspiel.controller.DaoException;
+import de.fom.tippspiel.persistence.Gruppe;
 import de.fom.tippspiel.persistence.Studiengang;
 import de.fom.tippspiel.persistence.User;
 
@@ -31,5 +33,9 @@ public interface PersonDao {
 	public boolean checkEmail(String value, int id) throws DaoException;
 
 	public void register(String bezeichnung, User user, Studiengang studiengang) throws DaoException;
+
+	public ArrayList<Gruppe> listGroups() throws DaoException;
+
+	public ArrayList<Studiengang> listStudy() throws DaoException;
 
 }

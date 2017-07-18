@@ -21,7 +21,7 @@
 							<input class="form-control" type="text" name="bez" id="bez" placeholder="Gruppenname">
 							<select name="studiengang" id="studiengang" class="form-control">
 								<option value="">Studiengang auswählen</option>
-								<c:forEach items="${nform.studiengang}" var="s">
+								<c:forEach items="${gform.studiengaenge}" var="s">
 								<option value="${s.id}">${s.bezeichnung}</option>
 								</c:forEach>
 							</select>
@@ -35,8 +35,8 @@
 						<form method="post" action="j_change_groups">
 							<input type="hidden" name="actiongruppe" value="gruppebeitreten">
 							<select name="allegruppen" id="allegruppen" class="form-control">
-								<option value="">Gruppe auswählen</option>
-								<c:forEach items="${nform.allegruppen}" var="e">
+								<option value="">Gruppe beitreten</option>
+								<c:forEach items="${gform.allegruppen}" var="e">
 								<option value="${e.id}">${e.bezeichnung}</option>
 								</c:forEach>
 							</select>
@@ -56,7 +56,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${gruppenlist}" var="g">
+					<c:forEach items="${gform.gruppenlist}" var="g">
 						<tr>
 							<td>${g.id}</td>
 							<td>${g.bezeichnung}</td>

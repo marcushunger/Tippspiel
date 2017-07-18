@@ -39,14 +39,15 @@ public class GroupsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		User cP = (User) request.getSession().getAttribute("user");
-		System.out.println(cP.getEmail());
-		Studiengang studiengang = cP.getGruppen().get(0).getStudiengang();
-		System.out.println(studiengang.getUni());
-		System.out.println(request.getParameter("bez"));
-		personDao.register(request.getParameter("bez"), cP, studiengang);
+		User u = (User) request.getSession().getAttribute("user");
+		String bezeichnung = request.getParameter("bez");
+		String sstudiengangId = request.getParameter("studiengang");
 
-		request.getSession().setAttribute("user", personDao.read(cP.getId()));
+		Integer studiengangId = Integer.parseInt(sstudiengangId);
+		Studiengang studiengang = personDao.readStudiengang(studiengangId);
+		personDao.register(bezeichnung, u, studiengang);
+
+		request.getSession().setAttribute("user", personDao.read(u.getId()));
 		response.sendRedirect(request.getContextPath() + "/groups.html");
 
 		// request.getRequestDispatcher("/login.jsp").forward(request,

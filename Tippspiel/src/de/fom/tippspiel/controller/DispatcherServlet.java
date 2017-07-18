@@ -1,7 +1,6 @@
 package de.fom.tippspiel.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 import javax.naming.InitialContext;
@@ -17,10 +16,9 @@ import org.apache.commons.lang3.StringUtils;
 import de.fom.tippspiel.dao.PersonDao;
 import de.fom.tippspiel.dao.UsermodulDao;
 import de.fom.tippspiel.model.ChangeForm;
+import de.fom.tippspiel.model.GroupsForm;
 import de.fom.tippspiel.model.NoteeintragenForm;
-import de.fom.tippspiel.persistence.Modul;
 import de.fom.tippspiel.persistence.User;
-import de.fom.tippspiel.persistence.Usermodul;
 import de.fom.tippspiel.view.Message;
 
 //@WebServlet(urlPatterns="*.html")
@@ -56,6 +54,7 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("RequestURI: " + request.getRequestURI());
 		String[] sa = StringUtils.split(request.getServletPath(), "/.\\");
 		String forward = null;
+		User us = (User) request.getSession().getAttribute("user");
 		Message message = new Message("", "");
 		// request.getSession().setAttribute("errors", message);
 		switch (sa[0]) {
@@ -65,13 +64,14 @@ public class DispatcherServlet extends HttpServlet {
 		case "change":
 			// checkMessage("c", request);
 			forward = "change";
-			User cP = (User) request.getSession().getAttribute("user");
-			ChangeForm cform = new ChangeForm(cP);
+			ChangeForm cform = new ChangeForm(us);
 			request.setAttribute("cform", cform);
 			break;
 		case "groups":
-			checkMessage("g", request);
-			forward = listGroups(request);
+			// checkMessage("g", request);
+			forward = "groups";
+			GroupsForm gform = new GroupsForm(request, us, personDao.listGroups(), personDao.listStudy());
+			request.setAttribute("gform", gform);
 			break;
 		case "index":
 			forward = list(request);
@@ -80,13 +80,9 @@ public class DispatcherServlet extends HttpServlet {
 			forward = list(request);
 			break;
 		case "noteeintragen":
-			checkMessage("n", request);
+			// checkMessage("n", request);
 			forward = "noteeintragen";
-			ArrayList<Usermodul> listeUsermodule = ((User) request.getSession().getAttribute("user")).getModule();
-			ArrayList<Modul> listeModule = ((User) request.getSession().getAttribute("user")).getGruppen().get(0)
-					.getStudiengang().getModule();
-			NoteeintragenForm nform = new NoteeintragenForm(request,
-					((User) request.getSession().getAttribute("user")));
+			NoteeintragenForm nform = new NoteeintragenForm(request, us);
 			request.setAttribute("nform", nform);
 			break;
 		case "doku":
@@ -109,17 +105,8 @@ public class DispatcherServlet extends HttpServlet {
 	private String list(HttpServletRequest request) throws DaoException {
 		String forward;
 		request.setAttribute("personlist", personDao.list());
-		// User muss irgendwann neu geladen werden!!
 		request.setAttribute("gruppenlist", ((User) request.getSession().getAttribute("user")).getGruppen());
 		forward = "personlist";
-		return forward;
-	}
-
-	private String listGroups(HttpServletRequest request) throws DaoException {
-		String forward;
-		request.setAttribute("user", (User) request.getSession().getAttribute("user"));
-		request.setAttribute("gruppenlist", ((User) request.getSession().getAttribute("user")).getGruppen());
-		forward = "groups";
 		return forward;
 	}
 

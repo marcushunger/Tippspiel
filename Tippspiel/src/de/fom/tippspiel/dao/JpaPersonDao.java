@@ -1,5 +1,6 @@
 package de.fom.tippspiel.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Alternative;
@@ -163,5 +164,16 @@ public class JpaPersonDao implements PersonDao {
 		g.setStudiengang(studiengang);
 		u.getGruppen().add(g);
 		manager.merge(u);
+	}
+
+	@Override
+	public ArrayList<Gruppe> listGroups() throws DaoException {
+		return new ArrayList<Gruppe>(manager.createQuery("select p from Gruppe p ", Gruppe.class).getResultList());
+	}
+
+	@Override
+	public ArrayList<Studiengang> listStudy() throws DaoException {
+		return new ArrayList<Studiengang>(
+				manager.createQuery("select p from Studiengang p ", Studiengang.class).getResultList());
 	}
 }
