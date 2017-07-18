@@ -85,7 +85,8 @@ public class DispatcherServlet extends HttpServlet {
 			ArrayList<Usermodul> listeUsermodule = ((User) request.getSession().getAttribute("user")).getModule();
 			ArrayList<Modul> listeModule = ((User) request.getSession().getAttribute("user")).getGruppen().get(0)
 					.getStudiengang().getModule();
-			NoteeintragenForm nform = new NoteeintragenForm(request, listeModule, listeUsermodule);
+			NoteeintragenForm nform = new NoteeintragenForm(request,
+					((User) request.getSession().getAttribute("user")));
 			request.setAttribute("nform", nform);
 			break;
 		case "doku":

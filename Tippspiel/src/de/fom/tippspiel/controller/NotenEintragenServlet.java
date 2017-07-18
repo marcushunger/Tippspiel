@@ -55,7 +55,7 @@ public class NotenEintragenServlet extends HttpServlet {
 			String smodulId = request.getParameter("modulreal");
 			String snotereal = request.getParameter("notereal");
 			if (smodulId.isEmpty() || snotereal.isEmpty()) {
-				message.setMessage("Bitte gültige Werte eintragen");
+				message.setMessage("Bitte gÃ¼ltige Werte eintragen");
 			} else {
 				Integer modulId = Integer.parseInt(smodulId);
 				double notereal = Double.parseDouble(snotereal);
@@ -66,7 +66,7 @@ public class NotenEintragenServlet extends HttpServlet {
 			String smodulId = request.getParameter("modultipp");
 			String snotereal = request.getParameter("notetipp");
 			if (smodulId.isEmpty() || snotereal.isEmpty()) {
-				message.setMessage("Bitte gültige Werte eintragen");
+				message.setMessage("Bitte gÃ¼ltige Werte eintragen");
 			} else {
 				Integer modulId = Integer.parseInt(smodulId);
 				double notetipp = Double.parseDouble(snotereal);

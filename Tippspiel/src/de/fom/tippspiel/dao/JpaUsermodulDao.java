@@ -1,5 +1,6 @@
 package de.fom.tippspiel.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Alternative;
@@ -33,6 +34,12 @@ public class JpaUsermodulDao implements UsermodulDao {
 	@Override
 	public void tippEintragen(Modul m, double tipp, User u) throws DaoException {
 		User user = u;
+		ArrayList<Usermodul> listum = u.getModule();
+		for (Usermodul usermodul : listum) {
+			if (usermodul.getModul().getBezeichnung().equals(m.getBezeichnung())) {
+				throw new DaoException("Tipp für Modul bereits abgegeben", null);
+			}
+		}
 		Usermodul um = new Usermodul();
 		um.setModul(m);
 		um.setNotetipp(tipp);

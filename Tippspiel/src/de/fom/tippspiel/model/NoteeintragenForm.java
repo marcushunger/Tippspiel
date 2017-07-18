@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import de.fom.tippspiel.persistence.Gruppe;
 import de.fom.tippspiel.persistence.Modul;
+import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.persistence.Usermodul;
 import de.fom.tippspiel.view.Message;
 
@@ -18,14 +20,27 @@ public class NoteeintragenForm {
 	private double[] noten = { 1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3, 3.7, 4.0, 4.3, 4.7, 5.0, 5.3, 5.7, 6.0 };
 	private Integer abweichung = 0;
 
-	private ArrayList<Modul> listmodule;
+	private ArrayList<Modul> listmodule = new ArrayList<Modul>();
 	private ArrayList<Usermodul> listusermodule;
 	private ArrayList<Usermodul> listusermodulem;
 
-	public NoteeintragenForm(HttpServletRequest request, ArrayList<Modul> listeModule,
-			ArrayList<Usermodul> listeUsermodule) {
+	public NoteeintragenForm(HttpServletRequest request, User user) {
 
-		for (Usermodul usermodul : listeUsermodule) {
+		User u = user;
+		ArrayList<Gruppe> gruppen = u.getGruppen();
+		for (Gruppe gruppe : gruppen) {
+			ArrayList<Modul> module = gruppe.getStudiengang().getModule();
+			for (Modul modul : module) {
+				if (!listmodule.contains(modul)) {
+					listmodule.add(modul);
+				}
+			}
+		}
+		// HashSet<Modul> hashSet = new HashSet<Modul>(listmodule);
+		// listmodule.clear();
+		// listmodule.addAll(hashSet);
+		listusermodule = user.getModule();
+		for (Usermodul usermodul : listusermodule) {
 			if (usermodul.getNotereal() > 0) {
 				double diff = usermodul.getNotereal() - usermodul.getNotetipp();
 				double teiler = 0.3;
@@ -33,10 +48,7 @@ public class NoteeintragenForm {
 				usermodul.setAbweichung(abweichung);
 			}
 		}
-
-		listmodule = listeModule;
-		listusermodule = listeUsermodule;
-		listusermodulem = (ArrayList<Usermodul>) listeUsermodule.clone();
+		listusermodulem = (ArrayList<Usermodul>) listusermodule.clone();
 		for (Iterator iterator = listusermodulem.iterator(); iterator.hasNext();) {
 			Usermodul usermodul = (Usermodul) iterator.next();
 			if (usermodul.getNotereal() > 0) {
