@@ -1,6 +1,6 @@
 package de.fom.tippspiel.controller;
 
-import java.io.*;
+import java.io.IOException;
 
 public class DaoException extends IOException {
 

@@ -23,19 +23,22 @@
 		  background-color: #eee;
 		}
 		
-		.form-signin {
+		.form-signin, .form-signup{
 		  max-width: 330px;
-		  padding: 15px;
+		  padding: 0px;
 		  margin: 0 auto;
 		}
+		
 		.form-signin .form-signin-heading,
+		.form-signup .form-signup-heading,
 		.form-signin .checkbox {
 		  margin-bottom: 10px;
 		}
 		.form-signin .checkbox {
 		  font-weight: normal;
 		}
-		.form-signin .form-control {
+		.form-signin .form-control,
+		.form-signup .form-control {
 		  position: relative;
 		  height: auto;
 		  -webkit-box-sizing: border-box;
@@ -47,15 +50,31 @@
 		.form-signin .form-control:focus {
 		  z-index: 2;
 		}
-		.form-signin input[type="email"] {
+		.form-signin input[type="email"]{
 		  margin-bottom: -1px;
 		  border-bottom-right-radius: 0;
 		  border-bottom-left-radius: 0;
 		}
-		.form-signin input[type="password"] {
+		.form-signin input[type="password"],
+		.form-signup input[type="password"]{
 		  margin-bottom: 10px;
 		  border-top-left-radius: 0;
 		  border-top-right-radius: 0;
+		}
+		
+		.form-signup input[type="email"]{
+		  margin-bottom: -1px;
+		  margin-bottom: -1px;
+		  border-top-left-radius: 0;
+		  border-top-right-radius: 0;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
+		
+		.form-signup input[type="text"]{
+		  margin-bottom: -1px;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
 		}
    </style>
   </head>
@@ -63,8 +82,13 @@
   <body>
     <div class="container">
     <div class="text-center"><h1>Tippspiel</h1></div>
+  <c:forEach items="${errors}" var="e">
+    <div class="alert alert-danger">
+	${e.message }
+	</div>
+	</c:forEach>
     <div class="row">
-<div class="col-sm-6">
+	<div class="col-sm-6">
       <form class="form-signin" method="post" action="j_security_check">
       	<!-- <div class="alert alert-danger">
   			<strong>Danger!</strong> Indicates a dangerous or potentially negative action.
@@ -85,14 +109,14 @@
 </div>
    
    <div class="col-sm-6">
-      <form class="form-signin" method="post" action="j_register_user">
+      <form class="form-signup" method="post" action="j_register_user">
       	<!-- <div class="alert alert-danger">
   			<strong>Danger!</strong> Indicates a dangerous or potentially negative action.
 		</div> -->
 		
-        <h2 class="form-signin-heading">Register</h2>
+        <h2 class="form-signup-heading">Register</h2>
         <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" name="j_name" id="inputName" class="form-control" placeholder="Name" required>
+        <input type="text" name="j_name" id="inputName" class="form-control" placeholder="Username" required>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="j_username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>

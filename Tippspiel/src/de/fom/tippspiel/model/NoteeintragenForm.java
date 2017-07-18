@@ -1,13 +1,10 @@
 package de.fom.tippspiel.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.StringUtils;
 
 import de.fom.tippspiel.persistence.Modul;
 import de.fom.tippspiel.persistence.Usermodul;
@@ -28,23 +25,13 @@ public class NoteeintragenForm {
 	public NoteeintragenForm(HttpServletRequest request, ArrayList<Modul> listeModule,
 			ArrayList<Usermodul> listeUsermodule) {
 
-		if (StringUtils.isNotBlank(request.getParameter("notetipp"))) {
-			notetipp = Float.parseFloat(request.getParameter("notetipp"));
-		}
-		if (StringUtils.isNotBlank(request.getParameter("notereal"))) {
-
-			notereal = Float.parseFloat(request.getParameter("notereal"));
-		}
-		if (notetipp > 0 && notereal > 0) {
-			int indexReal = Arrays.asList(noten).indexOf(notereal);
-			int indexTipp = Arrays.asList(noten).indexOf(notetipp);
-
-			abweichung = indexReal - indexTipp;
-		}
-
 		for (Usermodul usermodul : listeUsermodule) {
-			double diff = usermodul.getNotereal() - usermodul.getNotetipp();
-			usermodul.setAbweichung(diff);
+			if (usermodul.getNotereal() > 0) {
+				double diff = usermodul.getNotereal() - usermodul.getNotetipp();
+				double teiler = 0.3;
+				int abweichung = (int) (diff / teiler);
+				usermodul.setAbweichung(abweichung);
+			}
 		}
 
 		listmodule = listeModule;
@@ -55,7 +42,6 @@ public class NoteeintragenForm {
 			if (usermodul.getNotereal() > 0) {
 				iterator.remove();
 			}
-
 		}
 	}
 

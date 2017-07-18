@@ -8,14 +8,14 @@
 	Person List
 	</jsp:attribute>
 	<jsp:attribute name="headline">
-	Übersicht über die User
+	Übersicht User
 	</jsp:attribute>
 	<jsp:body> 
 		<table class="table table-hover">
 		<thead>
 			<tr>		
-				<th><fmt:message key="i18n.email"/></th>
-				<th><fmt:message key="i18n.email"/></th>
+				<th>eMail</th>
+				<th>Username</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,11 +27,12 @@
 			</c:forEach>
 		</tbody>
 		</table>
+		<!-- 
 		<table class="table table-hover">
 		<thead>
 			<tr>		
-				<th><fmt:message key="GruppenId"/></th>
-				<th><fmt:message key="Bezeichnung"/></th>
+				<th>Gruppenid</th>
+				<th>Gruppenname</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -42,6 +43,6 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-		</table>
+		</table> -->
 	</jsp:body>
 </my:base>

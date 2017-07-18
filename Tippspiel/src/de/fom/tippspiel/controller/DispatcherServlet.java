@@ -63,7 +63,7 @@ public class DispatcherServlet extends HttpServlet {
 			forward = "home";
 			break;
 		case "change":
-			checkMessage("c", request);
+			// checkMessage("c", request);
 			forward = "change";
 			User cP = (User) request.getSession().getAttribute("user");
 			ChangeForm cform = new ChangeForm(cP);

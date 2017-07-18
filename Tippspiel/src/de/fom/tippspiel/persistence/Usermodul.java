@@ -25,9 +25,9 @@ public class Usermodul {
 	@JoinColumn(name = "fidmodul")
 	private Modul modul;
 
-	// Berechnung erfolgt über NoteeintrageForm
+	// Berechnung erfolgt ï¿½ber NoteeintrageForm
 	@Transient
-	private double abweichung;
+	private int abweichung;
 
 	public Integer getId() {
 		return id;
@@ -69,11 +69,11 @@ public class Usermodul {
 		this.modul = modul;
 	}
 
-	public double getAbweichung() {
+	public int getAbweichung() {
 		return abweichung;
 	}
 
-	public void setAbweichung(double abweichung) {
+	public void setAbweichung(int abweichung) {
 		this.abweichung = abweichung;
 	}
 }

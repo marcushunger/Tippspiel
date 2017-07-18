@@ -91,11 +91,11 @@
 			<table class="table table-hover">
 		<thead>
 			<tr>		
-				<th><fmt:message key="TippId"/></th>
-				<th><fmt:message key="Modul"/></th>
-				<th><fmt:message key="Notentipp"/></th>
-				<th><fmt:message key="Note"/></th>
-				<th><fmt:message key="Abweichung"/></th>
+				<th>Tippid</th>
+				<th>Modul</th>
+				<th>Tipp</th>
+				<th>Note</th>
+				<th>Abweichung</th>
 			</tr>
 		</thead>
 		<tbody>

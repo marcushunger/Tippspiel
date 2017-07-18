@@ -53,15 +53,16 @@ public class ChangeServlet extends HttpServlet {
 			u = personDao.update(u, request.getParameter("usernamealt"), request.getParameter("emailalt"),
 					request.getParameter("passphraseneu"));
 
-			request.getSession().setAttribute("errors", message);
+			request.setAttribute("errors", message);
 			request.getSession().setAttribute("user", personDao.read(u.getId()));
 			response.sendRedirect(request.getContextPath() + "/home.html");
 			return;
 		} else {
-			message.setMessage("Fehler beim Ändern der Nutzerdaten");
-			request.getSession().setAttribute("errors", message);
+			message.setMessage("Fehler beim Ã¤ndern der Nutzerdaten");
+			request.setAttribute("errors", message);
 			request.getSession().setAttribute("user", personDao.read(u.getId()));
-			response.sendRedirect(request.getContextPath() + "/change.html");
+			// response.sendRedirect(request.getContextPath() + "/change.html");
+			request.getRequestDispatcher("/change.html").forward(request, response);
 		}
 
 	}

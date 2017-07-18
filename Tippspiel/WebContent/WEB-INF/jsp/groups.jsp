@@ -8,14 +8,34 @@
 	Groups
 	</jsp:attribute>
 	<jsp:attribute name="headline">
-	Gruppenmenü
+	Gruppen
 	</jsp:attribute>
-	<jsp:body> 
+	<jsp:body> 	
+		  <body>
+		  <div class="container">
+    <div class="row">
+<div class="col-sm-6">
+
+	<div style="color: #FF0000;">${errors.message}</div>
+
+		<h3>Neue Gruppe</h3>
+		<form method="post" action="j_change_groups">
+			<input type="hidden" name="id" value="">
+			
+			<p><label for="bez" class="sr-only">username</label><br/>
+			<input class="form-control" type="text" name="bez" id="bez" value="Bezeichnung" placeholder="Gruppenname"></p>
+	
+		<input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe Anlegen" name="groups">
+		</form>
+		</div>
+		</div>
+		
+		<br>
 		<table class="table table-hover">
 		<thead>
 			<tr>		
-				<th><fmt:message key="GruppenId"/>GruppenId</th>
-				<th><fmt:message key="Bezeichnung"/>Bezeichnung</th>
+				<th>Gruppenid</th>
+				<th>Gruppenname</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,19 +47,7 @@
 			</c:forEach>
 		</tbody>
 		</table>
-		  <body>
-	<div style="color: #FF0000;">${errors.message}<br/></div>
-
-		<form method="post" action="j_change_groups">
-			<input type="hidden" name="id" value="">
-			
-			<p><label for="bez">username</label><br/>
-			<input type="text" name="bez" id="bez" value="Bezeichnung"></p>
-			
-			
-		<p>* required</p>
-		<input type="submit" class="btn btn-default" value="Gruppe Anlegen" name="groups">
-		</form>
+		</div>
 	</body>
 </html>
 	</jsp:body>

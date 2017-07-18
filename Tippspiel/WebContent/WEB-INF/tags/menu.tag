@@ -14,13 +14,12 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li<c:if test="${forward eq 'personlist' }"> class="active"</c:if>><a href="<c:url value="/personlist.html"/>">Userlist</a></li>
-            <li<c:if test="${forward eq 'register' }"> class="active"</c:if>><a href="<c:url value="/register.html"/>">Register</a></li>
-            <li<c:if test="${forward eq 'change' }"> class="active"</c:if>><a href="<c:url value="/change.html"/>">Daten ändern</a></li>
             <li<c:if test="${forward eq 'groups' }"> class="active"</c:if>><a href="<c:url value="/groups.html"/>">Gruppen</a></li>
             <li<c:if test="${forward eq 'noteeintragen' }"> class="active"</c:if>><a href="<c:url value="/noteeintragen.html"/>">Note eintragen</a></li>
             <li<c:if test="${forward eq 'doku' }"> class="active"</c:if>><a href="<c:url value="/doku.html"/>">Doku</a></li>
+            <li<c:if test="${forward eq 'change' }"> class="active"</c:if>><a href="<c:url value="/change.html"/>">Daten ändern</a></li>
             <li><a href="<c:url value="/contact.jsp"/>">Kontakt</a></li>
-            <li class="dropdown">
+           <!--  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <img src="<c:url value="${flag}"/>">
                Locale <span class="caret"></span></a>
@@ -29,7 +28,7 @@
                 <li><a href="<c:url value="/index.html?locale=en"/>"><img src="<c:url value="/images/flag_en.png"/>"> Englisch</a></li>
                 <li><a href="<c:url value="/index.html?locale=ko"/>"><img src="<c:url value="/images/flag_ko.png"/>"> Koreanisch</a></li>
               </ul>
-            </li>
+            </li> -->
             <li><a href="<c:url value="/logout.html"/>">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->

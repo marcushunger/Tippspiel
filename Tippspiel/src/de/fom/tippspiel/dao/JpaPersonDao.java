@@ -5,8 +5,10 @@ import java.util.List;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import javax.transaction.TransactionalException;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -110,7 +112,7 @@ public class JpaPersonDao implements PersonDao {
 	}
 
 	@Override
-	public User login(String email, String password) throws DaoException {
+	public User login(String email, String password) throws DaoException, PersistenceException, TransactionalException {
 
 		TypedQuery<User> queryLogin = manager.createQuery("select p from User p WHERE p.email = :email", User.class);
 		queryLogin.setParameter("email", email);
@@ -125,13 +127,9 @@ public class JpaPersonDao implements PersonDao {
 			if (BCrypt.checkpw(password, queryLogin.getSingleResult().getPassphrase())) {
 				return user;
 			}
-		} else {
-			// TODO Hier wäre eine Meldung gut, dass login nicht klappt ,
-			// passwort falsch
 		}
 
 		return null;
-
 	}
 
 	@Override

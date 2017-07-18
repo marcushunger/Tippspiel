@@ -45,6 +45,11 @@
 		</div>
 		</div>
 		</div>
+		
+    <div class="alert alert-danger">
+	${errors.message}
+	</div>
+	
 		<div style="color: #FF0000;">${errors.message}<br/></div>
 		
 	</body>
