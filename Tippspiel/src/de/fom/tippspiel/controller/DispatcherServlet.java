@@ -62,13 +62,13 @@ public class DispatcherServlet extends HttpServlet {
 			forward = "home";
 			break;
 		case "change":
-			// checkMessage("c", request);
+			checkMessage("c", request);
 			forward = "change";
 			ChangeForm cform = new ChangeForm(us);
 			request.setAttribute("cform", cform);
 			break;
 		case "groups":
-			// checkMessage("g", request);
+			checkMessage("g", request);
 			forward = "groups";
 			GroupsForm gform = new GroupsForm(request, us, personDao.listGroups(), personDao.listStudy());
 			request.setAttribute("gform", gform);
@@ -80,7 +80,7 @@ public class DispatcherServlet extends HttpServlet {
 			forward = list(request);
 			break;
 		case "noteeintragen":
-			// checkMessage("n", request);
+			checkMessage("n", request);
 			forward = "noteeintragen";
 			NoteeintragenForm nform = new NoteeintragenForm(request, us);
 			request.setAttribute("nform", nform);

@@ -1,6 +1,8 @@
 package de.fom.tippspiel.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletConfig;
@@ -12,10 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import de.fom.tippspiel.dao.PersonDao;
 import de.fom.tippspiel.persistence.Studiengang;
 import de.fom.tippspiel.persistence.User;
+import de.fom.tippspiel.view.Message;
 
 //@WebServlet("/j_security_check")
 public class GroupsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	List<Message> errors = new ArrayList<Message>();
 
 	@Inject
 	private PersonDao personDao;
@@ -47,6 +52,9 @@ public class GroupsServlet extends HttpServlet {
 		Studiengang studiengang = personDao.readStudiengang(studiengangId);
 		personDao.register(bezeichnung, u, studiengang);
 
+		Message m = new Message("", "Bitte Gruppennamen und Studiengang angeben");
+		errors.add(m);
+		request.setAttribute("errors", errors);
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
 		response.sendRedirect(request.getContextPath() + "/groups.html");
 
