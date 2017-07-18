@@ -20,14 +20,14 @@
         <h3 class="form-signin-heading">Tipp</h3>
         
         		
-			<select name="noten" id="noten" class="form-control">
+			<select name="modultipp" id="modultipp" class="form-control">
 				<option value="">Modul auswählen</option>
-				<c:forEach items="${noteeintragen}" var="e">
+				<c:forEach items="${nform.listmodule}" var="e">
 					<option value="${e.id}">${e.bezeichnung}</option>
 				</c:forEach>
 			</select>
 			<br>
-			<select name="notenliste" id="notenliste" class="form-control">
+			<select name="notetipp" id="notetipp" class="form-control">
 				<option value="">Notentipp auswählen</option>
 				<c:forEach items="${nform.noten}" var="noten">
 					<option value="${noten}">${noten}</option>
@@ -44,14 +44,14 @@
       	<h3 class="form-signin-heading">Echte Note</h3>
         
      
-			<select name="noten" id="noten" class="form-control">
+			<select name="modulreal" id="modulreal" class="form-control">
 				<option value="">Modul auswählen</option>
-				<c:forEach items="${noteeintragen}" var="e">
-					<option value="${e.id}">${e.bezeichnung}</option>
+				<c:forEach items="${nform.listusermodule}" var="e">
+					<option value="${e.id}">${e.modul.bezeichnung}</option>
 				</c:forEach>
 			</select>	
 			<br>
-			<select name="notenliste" id="notenliste" class="form-control">
+			<select name="notereal" id="notereal" class="form-control">
 				<option value="">Geschriebene Note eintragen</option>
 				<c:forEach items="${nform.noten}" var="noten">
 					<option value="${noten}">${noten}</option>
@@ -88,7 +88,7 @@
 			<table class="table table-hover">
 		<thead>
 			<tr>		
-				<th><fmt:message key="GruppenId"/></th>
+				<th><fmt:message key="TippId"/></th>
 				<th><fmt:message key="Modul"/></th>
 				<th><fmt:message key="Notentipp"/></th>
 				<th><fmt:message key="Note"/></th>
@@ -96,13 +96,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${nform.listeusermodule}" var="u">
+			<c:forEach items="${nform.listusermodule}" var="u">
 				<tr>
-					<!-- <td>${u.id}</td> -->
-					<%-- <td>${u.modul.bezeichnung}</td>
+					<td>${u.id}</td>
+					<td>${u.modul.bezeichnung}</td>
 					<td>${u.notetipp}</td>
-					<td>${u.notereal}</td> --%>
-					<!-- Problem das abweichung nicht in der liste <td>${nform.abweichung}</td>-->
+					<td>${u.notereal}</td>
+					<td>${u.abweichung}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

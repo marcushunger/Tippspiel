@@ -13,4 +13,10 @@ public interface UsermodulDao {
 
 	public void tippEintragen(Modul m, double tipp, User u) throws DaoException;
 
+	public void realEintragen(Usermodul m, double real) throws DaoException;
+
+	public Modul readModul(Integer id) throws DaoException;
+
+	public Usermodul readUserModul(Integer id) throws DaoException;
+
 }

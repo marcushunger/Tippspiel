@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -24,6 +25,10 @@ public class Usermodul {
 	@JoinColumn(name = "fidmodul")
 	private Modul modul;
 
+	// Berechnung erfolgt über NoteeintrageForm
+	@Transient
+	private double abweichung;
+
 	public Integer getId() {
 		return id;
 	}
@@ -32,19 +37,19 @@ public class Usermodul {
 		this.id = id;
 	}
 
-	public double getNoteTipp() {
+	public double getNotetipp() {
 		return notetipp;
 	}
 
-	public void setNoteTipp(double noteTipp) {
+	public void setNotetipp(double noteTipp) {
 		this.notetipp = noteTipp;
 	}
 
-	public double getNoteReal() {
+	public double getNotereal() {
 		return notereal;
 	}
 
-	public void setNoteReal(double noteReal) {
+	public void setNotereal(double noteReal) {
 		this.notereal = noteReal;
 	}
 
@@ -62,5 +67,13 @@ public class Usermodul {
 
 	public void setModul(Modul modul) {
 		this.modul = modul;
+	}
+
+	public double getAbweichung() {
+		return abweichung;
+	}
+
+	public void setAbweichung(double abweichung) {
+		this.abweichung = abweichung;
 	}
 }

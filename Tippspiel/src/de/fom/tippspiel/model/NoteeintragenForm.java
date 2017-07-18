@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 
 import de.fom.tippspiel.persistence.Modul;
+import de.fom.tippspiel.persistence.Usermodul;
 import de.fom.tippspiel.view.Message;
 
 public class NoteeintragenForm {
@@ -18,9 +19,10 @@ public class NoteeintragenForm {
 	private double[] noten = { 1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3, 3.7, 4.0, 4.3, 4.7, 5.0, 5.3, 5.7, 6.0 };
 	private Integer abweichung = 0;
 
-	private List<Modul> listeusermodule;
+	private List<Modul> listmodule;
+	private List<Usermodul> listusermodule;
 
-	public NoteeintragenForm(HttpServletRequest request, List<Modul> listeModule) {
+	public NoteeintragenForm(HttpServletRequest request, List<Modul> listeModule, List<Usermodul> listeUsermodule) {
 
 		if (StringUtils.isNotBlank(request.getParameter("notetipp"))) {
 			notetipp = Float.parseFloat(request.getParameter("notetipp"));
@@ -35,7 +37,14 @@ public class NoteeintragenForm {
 
 			abweichung = indexReal - indexTipp;
 		}
-		listeusermodule = listeModule;
+
+		for (Usermodul usermodul : listeUsermodule) {
+			double diff = usermodul.getNotereal() - usermodul.getNotetipp();
+			usermodul.setAbweichung(diff);
+		}
+
+		listmodule = listeModule;
+		listusermodule = listeUsermodule;
 	}
 
 	// public Person getPerson() {
@@ -102,11 +111,19 @@ public class NoteeintragenForm {
 		this.abweichung = abweichung;
 	}
 
-	public List<Modul> getListeusermodule() {
-		return listeusermodule;
+	public List<Modul> getListmodule() {
+		return listmodule;
 	}
 
-	public void setListeusermodule(List<Modul> listeusermodule) {
-		this.listeusermodule = listeusermodule;
+	public void setListmodule(List<Modul> listmodule) {
+		this.listmodule = listmodule;
+	}
+
+	public List<Usermodul> getListusermodule() {
+		return listusermodule;
+	}
+
+	public void setListusermodule(List<Usermodul> listusermodule) {
+		this.listusermodule = listusermodule;
 	}
 }

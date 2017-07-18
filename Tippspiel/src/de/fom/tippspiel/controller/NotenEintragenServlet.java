@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import de.fom.tippspiel.dao.PersonDao;
 import de.fom.tippspiel.dao.UsermodulDao;
 import de.fom.tippspiel.persistence.Modul;
 import de.fom.tippspiel.persistence.User;
+import de.fom.tippspiel.persistence.Usermodul;
 
 //@WebServlet("/j_security_check")
 public class NotenEintragenServlet extends HttpServlet {
@@ -21,6 +23,8 @@ public class NotenEintragenServlet extends HttpServlet {
 
 	@Inject
 	private UsermodulDao usermodulDao;
+	@Inject
+	private PersonDao personDao;
 
 	// private static final String loginsql = "select * from wp.person p where
 	// p.email = ? and p.passphrase_sha2_salted = sha2(CONCAT(?, salt), 512)";
@@ -44,14 +48,17 @@ public class NotenEintragenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-
+		User u = (User) request.getSession().getAttribute("user");
 		if (action.equals("actionreal")) {
-			// Submit reale Note
+			Usermodul um = usermodulDao.readUserModul(Integer.parseInt(request.getParameter("modulreal")));
+			double notereal = Double.parseDouble(request.getParameter("notereal"));
+			usermodulDao.realEintragen(um, notereal);
 		} else if (action.equals("actiontipp")) {
-			Modul m = ((User) request.getSession().getAttribute("user")).getGruppen().get(0).getStudiengang()
-					.getModule().get(0);
-			System.out.println(m.getBezeichnung());
-			usermodulDao.tippEintragen(m, 2.7, (User) request.getSession().getAttribute("user"));
+			Modul m = usermodulDao.readModul(Integer.parseInt(request.getParameter("modultipp")));
+			double notetipp = Double.parseDouble(request.getParameter("notetipp"));
+			usermodulDao.tippEintragen(m, notetipp, u);
 		}
+		request.getSession().setAttribute("user", personDao.read(u.getId()));
+		response.sendRedirect(request.getContextPath() + "/noteeintragen.html");
 	}
 }

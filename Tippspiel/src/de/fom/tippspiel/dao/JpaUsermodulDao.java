@@ -35,10 +35,28 @@ public class JpaUsermodulDao implements UsermodulDao {
 		User user = u;
 		Usermodul um = new Usermodul();
 		um.setModul(m);
-		um.setNoteTipp(tipp);
+		um.setNotetipp(tipp);
 		um.setUser(user);
 		user.getModule().add(um);
 		manager.merge(user);
+	}
+
+	@Override
+	public Modul readModul(Integer id) throws DaoException {
+		return manager.find(Modul.class, id);
+	}
+
+	@Override
+	public void realEintragen(Usermodul m, double real) throws DaoException {
+		Usermodul um = m;
+		m.setNotereal(real);
+		manager.merge(um);
+
+	}
+
+	@Override
+	public Usermodul readUserModul(Integer id) throws DaoException {
+		return manager.find(Usermodul.class, id);
 	}
 
 }
