@@ -1,6 +1,8 @@
 package de.fom.tippspiel.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +21,12 @@ public class NoteeintragenForm {
 	private double[] noten = { 1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3, 3.7, 4.0, 4.3, 4.7, 5.0, 5.3, 5.7, 6.0 };
 	private Integer abweichung = 0;
 
-	private List<Modul> listmodule;
-	private List<Usermodul> listusermodule;
+	private ArrayList<Modul> listmodule;
+	private ArrayList<Usermodul> listusermodule;
+	private ArrayList<Usermodul> listusermodulem;
 
-	public NoteeintragenForm(HttpServletRequest request, List<Modul> listeModule, List<Usermodul> listeUsermodule) {
+	public NoteeintragenForm(HttpServletRequest request, ArrayList<Modul> listeModule,
+			ArrayList<Usermodul> listeUsermodule) {
 
 		if (StringUtils.isNotBlank(request.getParameter("notetipp"))) {
 			notetipp = Float.parseFloat(request.getParameter("notetipp"));
@@ -45,6 +49,14 @@ public class NoteeintragenForm {
 
 		listmodule = listeModule;
 		listusermodule = listeUsermodule;
+		listusermodulem = (ArrayList<Usermodul>) listeUsermodule.clone();
+		for (Iterator iterator = listusermodulem.iterator(); iterator.hasNext();) {
+			Usermodul usermodul = (Usermodul) iterator.next();
+			if (usermodul.getNotereal() > 0) {
+				iterator.remove();
+			}
+
+		}
 	}
 
 	// public Person getPerson() {
@@ -111,19 +123,27 @@ public class NoteeintragenForm {
 		this.abweichung = abweichung;
 	}
 
-	public List<Modul> getListmodule() {
+	public ArrayList<Modul> getListmodule() {
 		return listmodule;
 	}
 
-	public void setListmodule(List<Modul> listmodule) {
+	public void setListmodule(ArrayList<Modul> listmodule) {
 		this.listmodule = listmodule;
 	}
 
-	public List<Usermodul> getListusermodule() {
+	public ArrayList<Usermodul> getListusermodule() {
 		return listusermodule;
 	}
 
-	public void setListusermodule(List<Usermodul> listusermodule) {
+	public void setListusermodule(ArrayList<Usermodul> listusermodule) {
 		this.listusermodule = listusermodule;
+	}
+
+	public ArrayList<Usermodul> getListusermodulem() {
+		return listusermodulem;
+	}
+
+	public void setListusermodulem(ArrayList<Usermodul> listusermodulem) {
+		this.listusermodulem = listusermodulem;
 	}
 }

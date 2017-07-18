@@ -46,7 +46,7 @@
      
 			<select name="modulreal" id="modulreal" class="form-control">
 				<option value="">Modul auswählen</option>
-				<c:forEach items="${nform.listusermodule}" var="e">
+				<c:forEach items="${nform.listusermodulem}" var="e">
 					<option value="${e.id}">${e.modul.bezeichnung}</option>
 				</c:forEach>
 			</select>	
@@ -63,7 +63,10 @@
       </form>
       </div>
 </div>
-    </div> <!-- /container -->
+    </div> 
+    <div style="color: #FF0000;">${errors.message}<br/></div>
+    
+    <!-- /container -->
 		<!-- 
 		<table class="table table-hover">
 		<thead>
@@ -107,6 +110,5 @@
 			</c:forEach>
 		</tbody>
 		</table>
-		
 	</jsp:body>
 </my:base>

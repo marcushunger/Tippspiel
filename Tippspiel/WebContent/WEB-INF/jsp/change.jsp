@@ -24,9 +24,6 @@
 	 </head>
 
   <body>
-	<c:forEach items="${errors}" var="e">
-	${e.message }<br/>
-	</c:forEach>
 	
 	<div class="container">
     <div class="row">
@@ -48,6 +45,7 @@
 		</div>
 		</div>
 		</div>
+		<div style="color: #FF0000;">${errors.message}<br/></div>
 		
 	</body>
 </html>

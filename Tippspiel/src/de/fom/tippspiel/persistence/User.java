@@ -2,7 +2,6 @@ package de.fom.tippspiel.persistence;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,13 +28,13 @@ public class User {
 	private String salt;
 	@ManyToMany
 	@JoinTable(name = "usergruppe", joinColumns = @JoinColumn(name = "fiduser", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "fidgruppe", referencedColumnName = "id"))
-	private List<Gruppe> gruppen = new ArrayList<>();
+	private ArrayList<Gruppe> gruppen = new ArrayList<>();
 
 	@OneToMany(mappedBy = "user")
 	// @JoinTable(name = "usermodul", joinColumns = @JoinColumn(name =
 	// "fiduser", referencedColumnName = "id"), inverseJoinColumns =
 	// @JoinColumn(name = "fidmodul", referencedColumnName = "id"))
-	private List<Usermodul> module = new ArrayList<>();
+	private ArrayList<Usermodul> module = new ArrayList<>();
 
 	public User() {
 	}
@@ -121,19 +120,19 @@ public class User {
 		this.salt = salt;
 	}
 
-	public List<Gruppe> getGruppen() {
+	public ArrayList<Gruppe> getGruppen() {
 		return gruppen;
 	}
 
-	public void setGruppen(List<Gruppe> gruppen) {
+	public void setGruppen(ArrayList<Gruppe> gruppen) {
 		this.gruppen = gruppen;
 	}
 
-	public List<Usermodul> getModule() {
+	public ArrayList<Usermodul> getModule() {
 		return module;
 	}
 
-	public void setModule(List<Usermodul> module) {
+	public void setModule(ArrayList<Usermodul> module) {
 		this.module = module;
 	}
 

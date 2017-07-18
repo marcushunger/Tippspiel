@@ -28,10 +28,7 @@
 		</tbody>
 		</table>
 		  <body>
-	<c:forEach items="${errors}" var="e">
-	${e.message }<br/>
-	</c:forEach>
-
+	<div style="color: #FF0000;">${errors.message}<br/></div>
 
 		<form method="post" action="j_change_groups">
 			<input type="hidden" name="id" value="">

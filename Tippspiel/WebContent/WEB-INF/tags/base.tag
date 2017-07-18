@@ -19,7 +19,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><jsp:invoke fragment="title"/></title>
-
+	
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
 

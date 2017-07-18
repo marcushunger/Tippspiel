@@ -1,7 +1,6 @@
 package de.fom.tippspiel.persistence;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,13 +23,13 @@ public class Studiengang {
 	@ManyToMany
 	@JoinTable(name = "studiengangmodul", joinColumns = @JoinColumn(name = "fidstudiengang", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "fidmodul", referencedColumnName = "id"))
 	// @ManyToMany(mappedBy = "studiengaenge")
-	private List<Modul> module = new ArrayList<>();
+	private ArrayList<Modul> module = new ArrayList<>();
 
-	public List<Modul> getModule() {
+	public ArrayList<Modul> getModule() {
 		return module;
 	}
 
-	public void setModule(List<Modul> module) {
+	public void setModule(ArrayList<Modul> module) {
 		this.module = module;
 	}
 

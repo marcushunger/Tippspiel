@@ -1,7 +1,7 @@
 package de.fom.tippspiel.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 import javax.naming.InitialContext;
@@ -21,6 +21,7 @@ import de.fom.tippspiel.model.NoteeintragenForm;
 import de.fom.tippspiel.persistence.Modul;
 import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.persistence.Usermodul;
+import de.fom.tippspiel.view.Message;
 
 //@WebServlet(urlPatterns="*.html")
 public class DispatcherServlet extends HttpServlet {
@@ -55,18 +56,21 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("RequestURI: " + request.getRequestURI());
 		String[] sa = StringUtils.split(request.getServletPath(), "/.\\");
 		String forward = null;
-
+		Message message = new Message("", "");
+		// request.getSession().setAttribute("errors", message);
 		switch (sa[0]) {
 		case "home":
 			forward = "home";
 			break;
 		case "change":
+			checkMessage("c", request);
 			forward = "change";
 			User cP = (User) request.getSession().getAttribute("user");
 			ChangeForm cform = new ChangeForm(cP);
 			request.setAttribute("cform", cform);
 			break;
 		case "groups":
+			checkMessage("g", request);
 			forward = listGroups(request);
 			break;
 		case "index":
@@ -76,9 +80,10 @@ public class DispatcherServlet extends HttpServlet {
 			forward = list(request);
 			break;
 		case "noteeintragen":
+			checkMessage("n", request);
 			forward = "noteeintragen";
-			List<Usermodul> listeUsermodule = ((User) request.getSession().getAttribute("user")).getModule();
-			List<Modul> listeModule = ((User) request.getSession().getAttribute("user")).getGruppen().get(0)
+			ArrayList<Usermodul> listeUsermodule = ((User) request.getSession().getAttribute("user")).getModule();
+			ArrayList<Modul> listeModule = ((User) request.getSession().getAttribute("user")).getGruppen().get(0)
 					.getStudiengang().getModule();
 			NoteeintragenForm nform = new NoteeintragenForm(request, listeModule, listeUsermodule);
 			request.setAttribute("nform", nform);
@@ -120,5 +125,14 @@ public class DispatcherServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.doGet(req, resp);
+	}
+
+	private void checkMessage(String field, HttpServletRequest request) {
+		if ((Message) request.getSession().getAttribute("errors") != null) {
+			if (!((Message) request.getSession().getAttribute("errors")).getField().equals(field)) {
+				Message message = new Message("", "");
+				request.getSession().setAttribute("errors", message);
+			}
+		}
 	}
 }

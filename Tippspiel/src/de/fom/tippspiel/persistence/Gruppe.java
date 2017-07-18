@@ -1,7 +1,6 @@
 package de.fom.tippspiel.persistence;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +21,7 @@ public class Gruppe {
 	@JoinColumn(name = "fidstudiengang")
 	private Studiengang studiengang;
 	@ManyToMany(mappedBy = "gruppen")
-	private List<User> user = new ArrayList<>();
+	private ArrayList<User> user = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
@@ -40,11 +39,11 @@ public class Gruppe {
 		this.bezeichnung = bezeichnung;
 	}
 
-	public List<User> getUser() {
+	public ArrayList<User> getUser() {
 		return user;
 	}
 
-	public void setUser(List<User> user) {
+	public void setUser(ArrayList<User> user) {
 		this.user = user;
 	}
 

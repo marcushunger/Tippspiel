@@ -15,6 +15,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import de.fom.tippspiel.dao.PersonDao;
 import de.fom.tippspiel.persistence.User;
+import de.fom.tippspiel.view.Message;
 
 //@WebServlet("/j_security_check")
 public class ChangeServlet extends HttpServlet {
@@ -44,6 +45,7 @@ public class ChangeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Message message = new Message("c", "");
 		User u = (User) request.getSession().getAttribute("user");
 
 		if (BCrypt.checkpw(request.getParameter("passphrasealt"), u.getPassphrase())) {
@@ -51,11 +53,15 @@ public class ChangeServlet extends HttpServlet {
 			u = personDao.update(u, request.getParameter("usernamealt"), request.getParameter("emailalt"),
 					request.getParameter("passphraseneu"));
 
+			request.getSession().setAttribute("errors", message);
 			request.getSession().setAttribute("user", personDao.read(u.getId()));
 			response.sendRedirect(request.getContextPath() + "/home.html");
 			return;
 		} else {
-			// TODO Fehler passwörter stimmen nicht über ein
+			message.setMessage("Fehler beim �ndern der Nutzerdaten");
+			request.getSession().setAttribute("errors", message);
+			request.getSession().setAttribute("user", personDao.read(u.getId()));
+			response.sendRedirect(request.getContextPath() + "/change.html");
 		}
 
 	}

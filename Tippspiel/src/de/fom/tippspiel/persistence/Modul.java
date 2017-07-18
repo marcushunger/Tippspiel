@@ -1,7 +1,6 @@
 package de.fom.tippspiel.persistence;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,10 +25,10 @@ public class Modul {
 	// "fidgruppe", referencedColumnName = "id"), inverseJoinColumns =
 	// @JoinColumn(name = "fidstudiengang", referencedColumnName = "id"))
 	@ManyToMany(mappedBy = "module")
-	private List<Studiengang> studiengaenge = new ArrayList<>();
+	private ArrayList<Studiengang> studiengaenge = new ArrayList<>();
 
 	@OneToMany(mappedBy = "modul")
-	private List<Usermodul> user = new ArrayList<>();
+	private ArrayList<Usermodul> user = new ArrayList<>();
 
 	public Integer getCreditpoints() {
 		return creditpoints;
@@ -55,19 +54,19 @@ public class Modul {
 		this.bezeichnung = bezeichnung;
 	}
 
-	public List<Studiengang> getStudiengaenge() {
+	public ArrayList<Studiengang> getStudiengaenge() {
 		return studiengaenge;
 	}
 
-	public void setStudiengaenge(List<Studiengang> studiengaenge) {
+	public void setStudiengaenge(ArrayList<Studiengang> studiengaenge) {
 		this.studiengaenge = studiengaenge;
 	}
 
-	public List<Usermodul> getUser() {
+	public ArrayList<Usermodul> getUser() {
 		return user;
 	}
 
-	public void setUser(List<Usermodul> user) {
+	public void setUser(ArrayList<Usermodul> user) {
 		this.user = user;
 	}
 

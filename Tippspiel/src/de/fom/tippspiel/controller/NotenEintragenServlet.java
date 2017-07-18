@@ -16,6 +16,7 @@ import de.fom.tippspiel.dao.UsermodulDao;
 import de.fom.tippspiel.persistence.Modul;
 import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.persistence.Usermodul;
+import de.fom.tippspiel.view.Message;
 
 //@WebServlet("/j_security_check")
 public class NotenEintragenServlet extends HttpServlet {
@@ -47,17 +48,33 @@ public class NotenEintragenServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Message message = new Message("n", "");
 		String action = request.getParameter("action");
 		User u = (User) request.getSession().getAttribute("user");
 		if (action.equals("actionreal")) {
-			Usermodul um = usermodulDao.readUserModul(Integer.parseInt(request.getParameter("modulreal")));
-			double notereal = Double.parseDouble(request.getParameter("notereal"));
-			usermodulDao.realEintragen(um, notereal);
+			String smodulId = request.getParameter("modulreal");
+			String snotereal = request.getParameter("notereal");
+			if (smodulId.isEmpty() || snotereal.isEmpty()) {
+				message.setMessage("Bitte gültige Werte eintragen");
+			} else {
+				Integer modulId = Integer.parseInt(smodulId);
+				double notereal = Double.parseDouble(snotereal);
+				Usermodul um = usermodulDao.readUserModul(modulId);
+				usermodulDao.realEintragen(um, notereal);
+			}
 		} else if (action.equals("actiontipp")) {
-			Modul m = usermodulDao.readModul(Integer.parseInt(request.getParameter("modultipp")));
-			double notetipp = Double.parseDouble(request.getParameter("notetipp"));
-			usermodulDao.tippEintragen(m, notetipp, u);
+			String smodulId = request.getParameter("modultipp");
+			String snotereal = request.getParameter("notetipp");
+			if (smodulId.isEmpty() || snotereal.isEmpty()) {
+				message.setMessage("Bitte gültige Werte eintragen");
+			} else {
+				Integer modulId = Integer.parseInt(smodulId);
+				double notetipp = Double.parseDouble(snotereal);
+				Modul m = usermodulDao.readModul(modulId);
+				usermodulDao.tippEintragen(m, notetipp, u);
+			}
 		}
+		request.getSession().setAttribute("errors", message);
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
 		response.sendRedirect(request.getContextPath() + "/noteeintragen.html");
 	}
