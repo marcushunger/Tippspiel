@@ -21,6 +21,7 @@
     <link rel="icon" href="../../favicon.ico">  
         <!-- Bootstrap core CSS -->
     <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/tippspiel.css"/>" rel="stylesheet">
 	 </head>
 
   <body>
@@ -30,7 +31,7 @@
 <div class="col-sm-6">
 
 
-		<form method="post" action="j_change_user">
+		<form class="formEigen" method="post" action="j_change_user">
 			<input type="hidden" name="id" value="${cform.id}">
 			<input class="form-control" type="email" name="emailalt" id="emailalt" value="${cform.email}">
 			<br>

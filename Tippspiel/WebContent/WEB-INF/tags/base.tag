@@ -42,7 +42,7 @@
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1><jsp:invoke fragment="headline"/></h1>
+        <h2><jsp:invoke fragment="headline"/></h2>
       </div>
       <jsp:doBody/>
     </div>

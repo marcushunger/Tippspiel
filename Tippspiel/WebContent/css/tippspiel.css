@@ -1,0 +1,59 @@
+
+body {
+		  padding-top: 40px;
+		  padding-bottom: 40px;
+		  background-color: #eee;
+		}
+		
+		.formEigen{
+		  max-width: 330px;
+		  padding: 0px;
+		  margin: 0 auto;
+		 
+		}
+		
+		.formEigen .form-signin-heading,
+		.formEigen .form-signup-heading,
+		.formEigen .checkbox {
+		  margin-bottom: 10px;
+		}
+		.formEigen .checkbox {
+		  font-weight: normal;
+		}
+		.formEigen .form-control {
+		  position: relative;
+		  height: auto;
+		  -webkit-box-sizing: border-box;
+		     -moz-box-sizing: border-box;
+		          box-sizing: border-box;
+		  padding: 10px;
+		  font-size: 16px;
+		}
+		.formEigen .form-control:focus {
+		  z-index: 2;
+		}
+		.formEigen input[type="email"]{
+		  margin-bottom: -1px;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
+		.formEigen input[type="password"]{
+		  margin-bottom: 0px;
+		  border-top-left-radius: 0;
+		  border-top-right-radius: 0;
+		}
+		
+		.formEigen input[type="email"]{
+		  margin-bottom: -1px;
+		  margin-bottom: -1px;
+		  border-top-left-radius: 0;
+		  border-top-right-radius: 0;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
+		
+		.formEigen input[type="text"]{
+		  margin-bottom: -1px;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
