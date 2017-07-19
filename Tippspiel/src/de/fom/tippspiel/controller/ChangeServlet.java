@@ -49,29 +49,27 @@ public class ChangeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User u = (User) request.getSession().getAttribute("user");
+		errors.clear();
 		try {
 			if (BCrypt.checkpw(request.getParameter("passphrasealt"), u.getPassphrase())) {
 
 				u = personDao.update(u, request.getParameter("usernamealt"), request.getParameter("emailalt"),
 						request.getParameter("passphraseneu"));
-
-				Message m = new Message("c", "");
-				errors.add(m);
-				request.setAttribute("errors", errors);
-
-				return;
 			} else {
 				Message m = new Message("c", "Fehler beim ändern der Nutzerdaten");
 				errors.add(m);
 				request.setAttribute("errors", errors);
-
+				request.getSession().setAttribute("user", personDao.read(u.getId()));
+				request.getRequestDispatcher("/change.html").forward(request, response);
 			}
 		} catch (Exception e) {
 			Message m = new Message("", e.getMessage());
 			errors.add(m);
 			request.setAttribute("errors", errors);
+			request.getSession().setAttribute("user", personDao.read(u.getId()));
+			request.getRequestDispatcher("/change.html").forward(request, response);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		request.getRequestDispatcher("/change.html").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/change.html");
 	}
 }

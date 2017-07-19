@@ -33,6 +33,7 @@ public class GroupsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Message m = new Message("g", "");
+		errors.clear();
 		String action = request.getParameter("action");
 		User u = (User) request.getSession().getAttribute("user");
 		try {
@@ -43,6 +44,8 @@ public class GroupsServlet extends HttpServlet {
 					m.setMessage("Bitte Gruppennamen und Studiengang angeben");
 					errors.add(m);
 					request.setAttribute("errors", errors);
+					request.getSession().setAttribute("user", personDao.read(u.getId()));
+					request.getRequestDispatcher("/groups.html").forward(request, response);
 				} else {
 					Integer studiengangId = Integer.parseInt(sstudiengangId);
 					Studiengang studiengang = personDao.readStudiengang(studiengangId);
@@ -54,6 +57,8 @@ public class GroupsServlet extends HttpServlet {
 					m.setMessage("Bitte Gruppe auswählen");
 					errors.add(m);
 					request.setAttribute("errors", errors);
+					request.getSession().setAttribute("user", personDao.read(u.getId()));
+					request.getRequestDispatcher("/groups.html").forward(request, response);
 				} else {
 					Integer gruppenId = Integer.parseInt(sgruppenId);
 					Gruppe gruppe = personDao.readGruppe(gruppenId);
@@ -64,8 +69,10 @@ public class GroupsServlet extends HttpServlet {
 			m.setMessage(e.getMessage());
 			errors.add(m);
 			request.setAttribute("errors", errors);
+			request.getSession().setAttribute("user", personDao.read(u.getId()));
+			request.getRequestDispatcher("/groups.html").forward(request, response);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		request.getRequestDispatcher("/groups.html").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/groups.html");
 	}
 }

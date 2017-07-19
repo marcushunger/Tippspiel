@@ -36,6 +36,7 @@ public class NotenEintragenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Message message = new Message("n", "");
+		errors.clear();
 		String action = request.getParameter("action");
 		User u = (User) request.getSession().getAttribute("user");
 		try {
@@ -46,6 +47,8 @@ public class NotenEintragenServlet extends HttpServlet {
 					message.setMessage("Bitte gültige Werte eintragen");
 					errors.add(message);
 					request.setAttribute("errors", errors);
+					request.getSession().setAttribute("user", personDao.read(u.getId()));
+					request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
 				} else {
 					Integer modulId = Integer.parseInt(smodulId);
 					double notereal = Double.parseDouble(snotereal);
@@ -59,6 +62,8 @@ public class NotenEintragenServlet extends HttpServlet {
 					message.setMessage("Bitte gültige Werte eintragen");
 					errors.add(message);
 					request.setAttribute("errors", errors);
+					request.getSession().setAttribute("user", personDao.read(u.getId()));
+					request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
 				} else {
 					Integer modulId = Integer.parseInt(smodulId);
 					double notetipp = Double.parseDouble(snotereal);
@@ -70,8 +75,10 @@ public class NotenEintragenServlet extends HttpServlet {
 			message.setMessage(e.getMessage());
 			errors.add(message);
 			request.setAttribute("errors", errors);
+			request.getSession().setAttribute("user", personDao.read(u.getId()));
+			request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/noteeintragen.html");
 	}
 }
