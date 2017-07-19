@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.fom.tippspiel.dao.PersonDao;
+import de.fom.tippspiel.persistence.Gruppe;
 import de.fom.tippspiel.persistence.Studiengang;
 import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.view.Message;
@@ -44,16 +45,31 @@ public class GroupsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Message m = new Message("g", "");
+		String action = request.getParameter("action");
 		User u = (User) request.getSession().getAttribute("user");
-		String bezeichnung = request.getParameter("bez");
-		String sstudiengangId = request.getParameter("studiengang");
-
-		Integer studiengangId = Integer.parseInt(sstudiengangId);
-		Studiengang studiengang = personDao.readStudiengang(studiengangId);
-		personDao.register(bezeichnung, u, studiengang);
-
-		Message m = new Message("", "Bitte Gruppennamen und Studiengang angeben");
-		errors.add(m);
+		if (action.equals("actionanlegen")) {
+			String bezeichnung = request.getParameter("bez");
+			String sstudiengangId = request.getParameter("studiengang");
+			if (bezeichnung.isEmpty() || sstudiengangId.isEmpty()) {
+				m.setMessage("Bitte Gruppennamen und Studiengang angeben");
+				errors.add(m);
+			} else {
+				Integer studiengangId = Integer.parseInt(sstudiengangId);
+				Studiengang studiengang = personDao.readStudiengang(studiengangId);
+				personDao.register(bezeichnung, u, studiengang);
+			}
+		} else if (action.equals("actionbeitritt")) {
+			String sgruppenId = request.getParameter("allegruppen");
+			if (sgruppenId.isEmpty()) {
+				m.setMessage("Bitte Gruppe auswählen");
+				errors.add(m);
+			} else {
+				Integer gruppenId = Integer.parseInt(sgruppenId);
+				Gruppe gruppe = personDao.readGruppe(gruppenId);
+				personDao.registerGruppe(gruppe, u);
+			}
+		}
 		request.setAttribute("errors", errors);
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
 		response.sendRedirect(request.getContextPath() + "/groups.html");

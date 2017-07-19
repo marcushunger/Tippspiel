@@ -28,19 +28,18 @@ public class JpaPersonDao implements PersonDao {
 	@Override
 	public User read(Integer id) throws DaoException {
 
-		// TypedQuery<User> query = manager.createQuery("select p from User p
-		// WHERE p.id = :id", User.class);
-		// return query.setParameter("id", id).getSingleResult();
 		return manager.find(User.class, id);
+	}
+
+	@Override
+	public Gruppe readGruppe(Integer id) throws DaoException {
+
+		return manager.find(Gruppe.class, id);
 	}
 
 	@Override
 	public Studiengang readStudiengang(Integer id) throws DaoException {
 
-		// TypedQuery<Studiengang> query = manager.createQuery("select * from
-		// Studiengang p WHERE p.id = :id",
-		// Studiengang.class);
-		// return query.setParameter("id", id).getSingleResult();
 		return manager.find(Studiengang.class, id);
 	}
 
@@ -175,5 +174,14 @@ public class JpaPersonDao implements PersonDao {
 	public ArrayList<Studiengang> listStudy() throws DaoException {
 		return new ArrayList<Studiengang>(
 				manager.createQuery("select p from Studiengang p ", Studiengang.class).getResultList());
+	}
+
+	@Override
+	public void registerGruppe(Gruppe gruppe, User user) throws DaoException {
+		User u = user;
+		Gruppe g = gruppe;
+		u.getGruppen().add(g);
+		manager.merge(u);
+
 	}
 }

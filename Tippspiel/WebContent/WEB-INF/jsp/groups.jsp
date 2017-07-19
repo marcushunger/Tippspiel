@@ -9,9 +9,9 @@
 	<jsp:body> 	
 		<body>
 			<div class="container">
-<%-- 				<c:forEach items="${errors}" var="e"> --%>
-<%-- 	    			<div class="alert alert-danger">${e.message }</div> --%>
-<%-- 				</c:forEach> --%>
+				<c:forEach items="${errors}" var="e">
+	    			<div class="alert alert-danger">${e.message }</div>
+				</c:forEach>
     			<div class="row">
 					<div class="col-sm-6">
 						<h3>Gruppe anlegen</h3>
@@ -42,7 +42,7 @@
 							</select>
 							<br>
 							
-							<input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe Anlegen" name="groups">
+							<input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe Beitreten" name="groups">
 						</form>
 					</div>
 				</div>

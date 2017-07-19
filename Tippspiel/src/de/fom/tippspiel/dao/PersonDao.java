@@ -29,7 +29,6 @@ public interface PersonDao {
 
 	public User update(User p, String username, String email, String passwort) throws DaoException;
 
-	// public List<Gruppe> gruppenList();
 	public boolean checkEmail(String value, int id) throws DaoException;
 
 	public void register(String bezeichnung, User user, Studiengang studiengang) throws DaoException;
@@ -37,5 +36,9 @@ public interface PersonDao {
 	public ArrayList<Gruppe> listGroups() throws DaoException;
 
 	public ArrayList<Studiengang> listStudy() throws DaoException;
+
+	public Gruppe readGruppe(Integer id) throws DaoException;
+
+	public void registerGruppe(Gruppe gruppe, User user) throws DaoException;
 
 }
