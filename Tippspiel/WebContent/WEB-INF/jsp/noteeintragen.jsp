@@ -3,8 +3,7 @@
 
 <my:base>
 <jsp:body> 
-	
-	<div class="container">
+	<h3>Noten eintragen</h3>
     <div class="row">
     <c:forEach items="${errors}" var="e">
 	<div class="alert alert-danger">${e.message }</div>
@@ -12,7 +11,7 @@
 	<div class="col-sm-6">
       <form class="form-signin" method="post" action="j_noten_user">
       	
-        <h3 class="form-signin-heading">Tipp</h3>
+        <h4 class="form-signin-heading">Tipp</h4>
         
         		
 			<select name="modultipp" id="modultipp" class="form-control">
@@ -36,7 +35,7 @@
    
    <div class="col-sm-6">
       <form class="form-signin" method="post" action="j_noten_user">
-      	<h3 class="form-signin-heading">Echte Note</h3>
+      	<h4 class="form-signin-heading">Echte Note</h4>
         
      
 			<select name="modulreal" id="modulreal" class="form-control">
@@ -58,7 +57,6 @@
       </form>
       </div>
 </div>
-    </div> 
 		<br>
 		<h3>Übersicht Noten</h3>	
 			<table class="table table-hover">

@@ -17,34 +17,34 @@
 
 <!-- Fachliche Anforderung -->
 <div class="container-fluid">
-  <h2 class="margin">Fachliche Anforderung</h2>
+  <h4 class="margin">Fachliche Anforderung</h4>
 </div>
 
 <div class="container-fluid">
-  <h3 class="margin">Registrierung</h3>
+  <h4 class="margin">Registrierung</h4>
   <p>https://bcrypt-generator.com/</p>
   
 </div>
 
 <div class="container-fluid">
-  <h3 class="margin">Gruppen</h3>
+  <h4 class="margin">Gruppen</h4>
 </div>
 
 <div class="container-fluid">
-  <h3 class="margin">Module</h3>
+  <h4 class="margin">Module</h4>
 </div>
 
 <!-- Technische Doku -->
 <div class="container-fluid">
-  <h2 class="margin">Technisch</h2>
+  <h4 class="margin">Technisch</h4>
 </div>
 
 <div class="container-fluid">
-  <h3 class="margin">Datenbankmodell</h3>
+  <h4 class="margin">Datenbankmodell</h4>
 </div>
 
 <div class="container-fluid">
-  <h3 class="margin">Jars/ Apis</h3>
+  <h4 class="margin">Jars/ Apis</h4>
 </div>
 
 </jsp:body>

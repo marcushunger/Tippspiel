@@ -3,7 +3,7 @@
 <my:base>
 <jsp:body>
 
-<div class="container">
+<h3>Daten ändern</h3>
 <div class="row">
 <c:forEach items="${errors}" var="e">
 <div class="alert alert-danger">${e.message }</div>
@@ -24,7 +24,7 @@
 		</form>
 		</div>
 		</div>
-		</div>
+		
 
 </jsp:body>
 </my:base>

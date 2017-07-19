@@ -3,14 +3,14 @@
 
 <my:base>
 <jsp:body> 	
-
-			<div class="container">
+<h3>Gruppen</h3>
+			
 				<c:forEach items="${errors}" var="e">
 	    			<div class="alert alert-danger">${e.message }</div>
 				</c:forEach>
     			<div class="row">
 					<div class="col-sm-6">
-						<h3>Gruppe anlegen</h3>
+						<h4>Gruppe anlegen</h4>
 						<form method="post" action="j_change_groups">
 							<!-- <input type="hidden" name="id" value=""> -->
 							<label for="bez" class="sr-only">Gruppenname</label>
@@ -27,7 +27,7 @@
 						</form>
 					</div>
 					<div class="col-sm-6">
-						<h3>Gruppe beitreten</h3>
+						<h4>Gruppe beitreten</h4>
 						<form method="post" action="j_change_groups">
 							<input type="hidden" name="actiongruppe" value="gruppebeitreten">
 							<select name="allegruppen" id="allegruppen" class="form-control">
@@ -62,6 +62,6 @@
 					</c:forEach>
 				</tbody>
 				</table>
-		</div>
+	
 </jsp:body>
 </my:base>

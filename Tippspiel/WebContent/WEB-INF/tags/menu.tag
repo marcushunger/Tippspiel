@@ -16,8 +16,8 @@
         <li<c:if test="${forward eq 'personlist' }"> class="active"</c:if>><a href="<c:url value="/personlist.html"/>">Userlist</a></li>
         <li<c:if test="${forward eq 'groups' }"> class="active"</c:if>><a href="<c:url value="/groups.html"/>">Gruppen</a></li>
         <li<c:if test="${forward eq 'noteeintragen' }"> class="active"</c:if>><a href="<c:url value="/noteeintragen.html"/>">Note eintragen</a></li>
-        <li<c:if test="${forward eq 'doku' }"> class="active"</c:if>><a href="<c:url value="/doku.html"/>">Doku</a></li>
         <li<c:if test="${forward eq 'change' }"> class="active"</c:if>><a href="<c:url value="/change.html"/>">Daten ändern</a></li>
+        <li<c:if test="${forward eq 'doku' }"> class="active"</c:if>><a href="<c:url value="/doku.html"/>">Doku</a></li>
         <li><a href="<c:url value="/logout.html"/>">Logout</a></li>
       </ul>
     </div>
