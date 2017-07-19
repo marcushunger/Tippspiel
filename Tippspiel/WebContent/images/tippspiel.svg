@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="36 33 793 511" width="757px" height="478px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="189" y1="393" x2="199" y2="393" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="594" y1="85" x2="604" y2="85" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="199" y1="393" x2="594" y2="85" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="196.5" y1="393" x2="192.96446609407" y2="396.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="196.5" y1="393" x2="192.96446609407" y2="389.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="599" y1="85" x2="595.46446609407" y2="88.535533905933" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="599" y1="85" x2="595.46446609407" y2="81.464466094067" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="193" y1="118" x2="203" y2="118" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="594" y1="85" x2="604" y2="85" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="203" y1="118" x2="594" y2="85" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="200.5" y1="118" x2="196.96446609407" y2="121.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="200.5" y1="118" x2="196.96446609407" y2="114.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="599" y1="85" x2="595.46446609407" y2="88.535533905933" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="599" y1="85" x2="595.46446609407" y2="81.464466094067" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="193" y1="98" x2="203" y2="98" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="491" y1="446" x2="501" y2="446" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="203" y1="98" x2="491" y2="446" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="200.5" y1="98" x2="196.96446609407" y2="101.53553390593" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="200.5" y1="98" x2="196.96446609407" y2="94.464466094067" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="496" y1="446" x2="492.46446609407" y2="449.53553390593" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="496" y1="446" x2="492.46446609407" y2="442.46446609407" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="142" y1="220" x2="152" y2="220" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="324" y1="229" x2="334" y2="229" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="152" y1="220" x2="324" y2="229" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="149.5" y1="220" x2="145.96446609407" y2="223.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="149.5" y1="220" x2="145.96446609407" y2="216.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="329" y1="229" x2="325.46446609407" y2="232.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="329" y1="229" x2="325.46446609407" y2="225.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="51" y1="240" x2="41" y2="240" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="65" y1="353" x2="75" y2="353" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="41" y1="240" x2="65" y2="353" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="43.5" y1="240" x2="47.035533905933" y2="243.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="43.5" y1="240" x2="47.035533905933" y2="236.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="70" y1="353" x2="66.464466094067" y2="356.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="70" y1="353" x2="66.464466094067" y2="349.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="694" y1="268" x2="684" y2="268" style="stroke:#333;stroke-width:1;"/>
+   <line x1="612" y1="446" x2="602" y2="446" style="stroke:#333;stroke-width:1;"/>
+   <line x1="684" y1="268" x2="612" y2="446" style="stroke:#333;stroke-width:1;"/>
+   <line x1="686.5" y1="268" x2="690.03553390593" y2="271.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="686.5" y1="268" x2="690.03553390593" y2="264.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="607" y1="446" x2="610.53553390593" y2="449.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="607" y1="446" x2="610.53553390593" y2="442.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="694" y1="288" x2="684" y2="288" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="524" y1="229" x2="514" y2="229" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="684" y1="288" x2="524" y2="229" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="686.5" y1="288" x2="690.03553390593" y2="291.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="686.5" y1="288" x2="690.03553390593" y2="284.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="519" y1="229" x2="522.53553390593" y2="232.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="519" y1="229" x2="522.53553390593" y2="225.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <rect width="114" height="20" x="75" y="323" style="fill:#007;stroke:black;"/>
+   <text width="114" height="20" x="80" y="337" style="fill:#fff;" font-family="Arial" font-size="16px"> gruppe</text>
+   <rect width="114" height="20" x="75" y="343" style="fill:#aea;stroke:black;"/>
+   <text width="114" height="20" x="80" y="357" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="114" height="20" x="75" y="363" style="fill:none;stroke:black;"/>
+   <text width="114" height="20" x="80" y="377" style="fill:black;" font-family="Arial" font-size="16px">bezeichnung</text>
+   <rect width="114" height="20" x="75" y="383" style="fill:none;stroke:black;"/>
+   <text width="114" height="20" x="80" y="397" style="fill:black;" font-family="Arial" font-size="16px">fidstudiengang</text>
+   <rect width="101" height="20" x="501" y="416" style="fill:#007;stroke:black;"/>
+   <text width="101" height="20" x="506" y="430" style="fill:#fff;" font-family="Arial" font-size="16px"> modul</text>
+   <rect width="101" height="20" x="501" y="436" style="fill:#aea;stroke:black;"/>
+   <text width="101" height="20" x="506" y="450" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="101" height="20" x="501" y="456" style="fill:none;stroke:black;"/>
+   <text width="101" height="20" x="506" y="470" style="fill:black;" font-family="Arial" font-size="16px">bezeichnung</text>
+   <rect width="101" height="20" x="501" y="476" style="fill:none;stroke:black;"/>
+   <text width="101" height="20" x="506" y="490" style="fill:black;" font-family="Arial" font-size="16px">creditpoints</text>
+   <rect width="101" height="20" x="604" y="55" style="fill:#007;stroke:black;"/>
+   <text width="101" height="20" x="609" y="69" style="fill:#fff;" font-family="Arial" font-size="16px"> studiengang</text>
+   <rect width="101" height="20" x="604" y="75" style="fill:#aea;stroke:black;"/>
+   <text width="101" height="20" x="609" y="89" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="101" height="20" x="604" y="95" style="fill:none;stroke:black;"/>
+   <text width="101" height="20" x="609" y="109" style="fill:black;" font-family="Arial" font-size="16px">bezeichnung</text>
+   <rect width="101" height="20" x="604" y="115" style="fill:none;stroke:black;"/>
+   <text width="101" height="20" x="609" y="129" style="fill:black;" font-family="Arial" font-size="16px">uni</text>
+   <rect width="142" height="20" x="51" y="48" style="fill:#007;stroke:black;"/>
+   <text width="142" height="20" x="56" y="62" style="fill:#fff;" font-family="Arial" font-size="16px"> studiengangmodul</text>
+   <rect width="142" height="20" x="51" y="68" style="fill:#aea;stroke:black;"/>
+   <text width="142" height="20" x="56" y="82" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="142" height="20" x="51" y="88" style="fill:none;stroke:black;"/>
+   <text width="142" height="20" x="56" y="102" style="fill:black;" font-family="Arial" font-size="16px">fidmodul</text>
+   <rect width="142" height="20" x="51" y="108" style="fill:none;stroke:black;"/>
+   <text width="142" height="20" x="56" y="122" style="fill:black;" font-family="Arial" font-size="16px">fidstudiengang</text>
+   <rect width="180" height="20" x="334" y="199" style="fill:#007;stroke:black;"/>
+   <text width="180" height="20" x="339" y="213" style="fill:#fff;" font-family="Arial" font-size="16px"> user</text>
+   <rect width="180" height="20" x="334" y="219" style="fill:#aea;stroke:black;"/>
+   <text width="180" height="20" x="339" y="233" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="180" height="20" x="334" y="239" style="fill:none;stroke:black;"/>
+   <text width="180" height="20" x="339" y="253" style="fill:black;" font-family="Arial" font-size="16px">username</text>
+   <rect width="180" height="20" x="334" y="259" style="fill:none;stroke:black;"/>
+   <text width="180" height="20" x="339" y="273" style="fill:black;" font-family="Arial" font-size="16px">email</text>
+   <rect width="180" height="20" x="334" y="279" style="fill:none;stroke:black;"/>
+   <text width="180" height="20" x="339" y="293" style="fill:black;" font-family="Arial" font-size="16px">passphrase</text>
+   <rect width="180" height="20" x="334" y="299" style="fill:none;stroke:black;"/>
+   <text width="180" height="20" x="339" y="313" style="fill:black;" font-family="Arial" font-size="16px">passphrase_sha2</text>
+   <rect width="180" height="20" x="334" y="319" style="fill:none;stroke:black;"/>
+   <text width="180" height="20" x="339" y="333" style="fill:black;" font-family="Arial" font-size="16px">passphrase_sha2_salted</text>
+   <rect width="180" height="20" x="334" y="339" style="fill:none;stroke:black;"/>
+   <text width="180" height="20" x="339" y="353" style="fill:black;" font-family="Arial" font-size="16px">salt</text>
+   <rect width="91" height="20" x="51" y="170" style="fill:#007;stroke:black;"/>
+   <text width="91" height="20" x="56" y="184" style="fill:#fff;" font-family="Arial" font-size="16px"> usergruppe</text>
+   <rect width="91" height="20" x="51" y="190" style="fill:#aea;stroke:black;"/>
+   <text width="91" height="20" x="56" y="204" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="91" height="20" x="51" y="210" style="fill:none;stroke:black;"/>
+   <text width="91" height="20" x="56" y="224" style="fill:black;" font-family="Arial" font-size="16px">fiduser</text>
+   <rect width="91" height="20" x="51" y="230" style="fill:none;stroke:black;"/>
+   <text width="91" height="20" x="56" y="244" style="fill:black;" font-family="Arial" font-size="16px">fidgruppe</text>
+   <rect width="84" height="20" x="694" y="178" style="fill:#007;stroke:black;"/>
+   <text width="84" height="20" x="699" y="192" style="fill:#fff;" font-family="Arial" font-size="16px"> usermodul</text>
+   <rect width="84" height="20" x="694" y="198" style="fill:#aea;stroke:black;"/>
+   <text width="84" height="20" x="699" y="212" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="84" height="20" x="694" y="218" style="fill:none;stroke:black;"/>
+   <text width="84" height="20" x="699" y="232" style="fill:black;" font-family="Arial" font-size="16px">notetipp</text>
+   <rect width="84" height="20" x="694" y="238" style="fill:none;stroke:black;"/>
+   <text width="84" height="20" x="699" y="252" style="fill:black;" font-family="Arial" font-size="16px">notereal</text>
+   <rect width="84" height="20" x="694" y="258" style="fill:none;stroke:black;"/>
+   <text width="84" height="20" x="699" y="272" style="fill:black;" font-family="Arial" font-size="16px">fidmodul</text>
+   <rect width="84" height="20" x="694" y="278" style="fill:none;stroke:black;"/>
+   <text width="84" height="20" x="699" y="292" style="fill:black;" font-family="Arial" font-size="16px">fiduser</text>
+</svg>

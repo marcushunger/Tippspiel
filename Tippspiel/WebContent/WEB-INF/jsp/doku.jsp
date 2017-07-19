@@ -18,21 +18,29 @@
 <!-- Fachliche Anforderung -->
 <div class="container-fluid">
   <h4 class="margin">Fachliche Anforderung</h4>
+  <h5>Registrierung</h5>
+  Es soll die Möglichkeit geben sich für das Tippspiel zu registrieren. Die Registrierung soll dabei nur die
+  Felder Username, eMail und Passwort benötigen. Zum Login soll dabei die eMail und das Passwort dienen. 
+  Nach der Eingabe kann der User direkt loslegen.
+  <h5>Userlist</h5>
+  Es werden alle bislang registrierten User angezeigt. In der Tabelle werden eMail und Username aufgelistet.
+  <h5>Gruppen</h5>
+  Der Nutzer soll neue Gruppen anlegen können. Dabei kann der Gruppenname frei gewählt (*muss einmalig sein) werden. 
+  Außerdem wird zu jeder Gruppe ein Studiengang gewählt.
+  <br>
+  Die Alternative ist, der Beitritt einer schon bestehenden Gruppe. Hier werden in einer Combobox alle verfügbaren Gruppen 
+  angezeigt.
+  <br>
+  <h5>Noten</h5>
+  Unter dem Reiter Noten können die Notentipps und die real geschriebenen Noten eingetragen werden. Die Auswahl geschieht 
+  jeweils über das Modul und die Note.
+  Auch werden alle eingegebenen Noten in einer Tabelle angezeigt.
+  <br>
+  <h5>Daten ändern</h5>
+  Unter dem Punkt "Daten ändern" ist es möglich seine Userdaten zu ändern.
 </div>
 
-<div class="container-fluid">
-  <h4 class="margin">Registrierung</h4>
-  <p>https://bcrypt-generator.com/</p>
-  
-</div>
 
-<div class="container-fluid">
-  <h4 class="margin">Gruppen</h4>
-</div>
-
-<div class="container-fluid">
-  <h4 class="margin">Module</h4>
-</div>
 
 <!-- Technische Doku -->
 <div class="container-fluid">
@@ -41,6 +49,7 @@
 
 <div class="container-fluid">
   <h4 class="margin">Datenbankmodell</h4>
+  <img src="/images/tippspiel.svg" alt="Datenbankmodel" width="304" height="236">
 </div>
 
 <div class="container-fluid">
