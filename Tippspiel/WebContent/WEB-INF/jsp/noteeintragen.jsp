@@ -6,6 +6,9 @@
 	
 	<div class="container">
     <div class="row">
+    <c:forEach items="${errors}" var="e">
+	<div class="alert alert-danger">${e.message }</div>
+	</c:forEach>
 	<div class="col-sm-6">
       <form class="form-signin" method="post" action="j_noten_user">
       	

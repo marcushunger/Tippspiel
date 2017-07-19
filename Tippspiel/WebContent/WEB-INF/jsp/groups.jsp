@@ -22,7 +22,7 @@
 								</c:forEach>
 							</select>
 							<br>
-							
+							<input type="hidden" name="action" value="actionanlegen">
 							<input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe Anlegen" name="groups">
 						</form>
 					</div>
@@ -38,6 +38,7 @@
 							</select>
 							<br>
 							
+							<input type="hidden" name="action" value="actionbeitritt">
 							<input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe Beitreten" name="groups">
 						</form>
 					</div>
