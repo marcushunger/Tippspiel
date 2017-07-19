@@ -1,13 +1,9 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@taglib prefix="my" tagdir="/WEB-INF/tags" %> 
+<%@taglib prefix="my" tagdir="/WEB-INF/tags" %> 
 
+<my:base>
+<jsp:body> 	
 
- <my:base>
-	<jsp:attribute name="title">Groups</jsp:attribute>
-	<jsp:attribute name="headline">Gruppen</jsp:attribute>
-	<jsp:body> 	
-		<body>
 			<div class="container">
 				<c:forEach items="${errors}" var="e">
 	    			<div class="alert alert-danger">${e.message }</div>
@@ -66,7 +62,5 @@
 				</tbody>
 				</table>
 		</div>
-	</body>
-	</html>
-	</jsp:body>
+</jsp:body>
 </my:base>

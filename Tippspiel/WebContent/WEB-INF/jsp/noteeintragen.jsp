@@ -1,16 +1,8 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@taglib prefix="my" tagdir="/WEB-INF/tags" %> 
+<%@taglib prefix="my" tagdir="/WEB-INF/tags" %> 
 
-
- <my:base>
-	<jsp:attribute name="title">
-	Person List
-	</jsp:attribute>
-	<jsp:attribute name="headline">
-	Deine Noten
-	</jsp:attribute>
-	<jsp:body> 
+<my:base>
+<jsp:body> 
 	
 	<div class="container">
     <div class="row">
@@ -64,28 +56,6 @@
       </div>
 </div>
     </div> 
-    <div style="color: #FF0000;">${errors.message}<br/></div>
-    
-    <!-- /container -->
-		<!-- 
-		<table class="table table-hover">
-		<thead>
-			<tr>		
-				<th><fmt:message key="GruppenId"/></th>
-				<th><fmt:message key="Bezeichnung"/></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${noteeintragen}" var="n">
-				<tr>
-					<td><a href="<c:url value="/noteeintragen.html?id=${n.id}"/>">${n.id}</a></td>
-					<td><a href="<c:url value="/noteeintragen.html?id=${n.id}"/>">${n.bezeichnung}</a></td>
-
-				</tr>
-			</c:forEach>
-		</tbody>
-		</table>
-		 -->
 		<br>
 		<h3>Übersicht Noten</h3>	
 			<table class="table table-hover">
