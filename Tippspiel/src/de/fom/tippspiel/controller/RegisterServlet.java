@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
 				request.getParameter("j_password"));
 
 		if (user != null) {
-			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("user", personDao.read(user.getId()));
 			response.sendRedirect(request.getContextPath() + "/home.html");
 			return;
 		}
