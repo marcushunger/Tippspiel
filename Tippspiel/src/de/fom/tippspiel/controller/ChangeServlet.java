@@ -63,7 +63,7 @@ public class ChangeServlet extends HttpServlet {
 				request.getRequestDispatcher("/change.html").forward(request, response);
 			}
 		} catch (Exception e) {
-			Message m = new Message("", e.getMessage());
+			Message m = new Message("", e.getCause().getMessage());
 			errors.add(m);
 			request.setAttribute("errors", errors);
 			request.getSession().setAttribute("user", personDao.read(u.getId()));

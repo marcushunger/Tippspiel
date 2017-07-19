@@ -72,7 +72,7 @@ public class NotenEintragenServlet extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-			message.setMessage(e.getMessage());
+			message.setMessage(e.getCause().getMessage());
 			errors.add(message);
 			request.setAttribute("errors", errors);
 			request.getSession().setAttribute("user", personDao.read(u.getId()));

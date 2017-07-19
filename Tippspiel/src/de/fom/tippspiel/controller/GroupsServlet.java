@@ -50,6 +50,8 @@ public class GroupsServlet extends HttpServlet {
 					Integer studiengangId = Integer.parseInt(sstudiengangId);
 					Studiengang studiengang = personDao.readStudiengang(studiengangId);
 					personDao.register(bezeichnung, u, studiengang);
+					request.getSession().setAttribute("user", personDao.read(u.getId()));
+					response.sendRedirect(request.getContextPath() + "/groups.html");
 				}
 			} else if (action.equals("actionbeitritt")) {
 				String sgruppenId = request.getParameter("allegruppen");
@@ -63,16 +65,16 @@ public class GroupsServlet extends HttpServlet {
 					Integer gruppenId = Integer.parseInt(sgruppenId);
 					Gruppe gruppe = personDao.readGruppe(gruppenId);
 					personDao.registerGruppe(gruppe, u);
+					request.getSession().setAttribute("user", personDao.read(u.getId()));
+					response.sendRedirect(request.getContextPath() + "/groups.html");
 				}
 			}
 		} catch (Exception e) {
-			m.setMessage(e.getMessage());
+			m.setMessage(e.getCause().getMessage());
 			errors.add(m);
 			request.setAttribute("errors", errors);
 			request.getSession().setAttribute("user", personDao.read(u.getId()));
 			request.getRequestDispatcher("/groups.html").forward(request, response);
 		}
-		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		response.sendRedirect(request.getContextPath() + "/groups.html");
 	}
 }
