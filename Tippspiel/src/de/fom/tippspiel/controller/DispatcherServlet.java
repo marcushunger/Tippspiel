@@ -3,48 +3,31 @@ package de.fom.tippspiel.controller;
 import java.io.IOException;
 
 import javax.inject.Inject;
-import javax.naming.InitialContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
 
 import de.fom.tippspiel.dao.PersonDao;
-import de.fom.tippspiel.dao.UsermodulDao;
 import de.fom.tippspiel.model.ChangeForm;
 import de.fom.tippspiel.model.GroupsForm;
 import de.fom.tippspiel.model.NoteeintragenForm;
 import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.view.Message;
 
-//@WebServlet(urlPatterns="*.html")
 public class DispatcherServlet extends HttpServlet {
 
 	@Inject
 	private PersonDao personDao;
 
-	@Inject
-	private UsermodulDao usermodulDao;
-
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// DB Verbindungen zur Verf�gung stellen
-		try {
-			String s = config.getServletContext().getInitParameter("datasource");
-			InitialContext initialContext = new InitialContext();
-			DataSource wp = (DataSource) initialContext.lookup(s);
-			// personDao = new JdbcPersonDao(wp); //Auskommentiert weil
-			// PersonDao injected wird
-			// masterDataDao = new JdbcMasterDataDao(wp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	@Override
@@ -55,8 +38,6 @@ public class DispatcherServlet extends HttpServlet {
 		String[] sa = StringUtils.split(request.getServletPath(), "/.\\");
 		String forward = null;
 		User us = (User) request.getSession().getAttribute("user");
-		Message message = new Message("", "");
-		// request.getSession().setAttribute("errors", message);
 		switch (sa[0]) {
 		case "home":
 			forward = "home";
@@ -87,6 +68,9 @@ public class DispatcherServlet extends HttpServlet {
 			break;
 		case "doku":
 			forward = "doku";
+			break;
+		case "impressum":
+			forward = "impressum";
 			break;
 		case "logout":
 			request.getSession().invalidate();

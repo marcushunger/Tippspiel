@@ -17,7 +17,6 @@ import de.fom.tippspiel.persistence.Studiengang;
 import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.view.Message;
 
-//@WebServlet("/j_security_check")
 public class GroupsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,18 +28,6 @@ public class GroupsServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 
-		// // DB Verbindungen zur Verf�gung stellen
-		// try {
-		// String s = config.getServletContext().getInitParameter("datasource");
-		// InitialContext initialContext = new InitialContext();
-		// @SuppressWarnings("unused")
-		// DataSource wp = (DataSource) initialContext.lookup(s);
-		// // wp = (DataSource)config.getServletContext().getAttribute("ds");
-		// // personDao = new JdbcPersonDao(wp);
-		// // personDao = new JpaPersonDao();
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,6 +41,7 @@ public class GroupsServlet extends HttpServlet {
 			if (bezeichnung.isEmpty() || sstudiengangId.isEmpty()) {
 				m.setMessage("Bitte Gruppennamen und Studiengang angeben");
 				errors.add(m);
+				request.setAttribute("errors", errors);
 			} else {
 				Integer studiengangId = Integer.parseInt(sstudiengangId);
 				Studiengang studiengang = personDao.readStudiengang(studiengangId);
@@ -64,17 +52,14 @@ public class GroupsServlet extends HttpServlet {
 			if (sgruppenId.isEmpty()) {
 				m.setMessage("Bitte Gruppe auswählen");
 				errors.add(m);
+				request.setAttribute("errors", errors);
 			} else {
 				Integer gruppenId = Integer.parseInt(sgruppenId);
 				Gruppe gruppe = personDao.readGruppe(gruppenId);
 				personDao.registerGruppe(gruppe, u);
 			}
 		}
-		request.setAttribute("errors", errors);
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
 		response.sendRedirect(request.getContextPath() + "/groups.html");
-
-		// request.getRequestDispatcher("/login.jsp").forward(request,
-		// response);
 	}
 }

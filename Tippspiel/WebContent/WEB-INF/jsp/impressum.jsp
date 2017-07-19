@@ -3,8 +3,13 @@
 <my:base>
 <jsp:body>
 	
-<h2>Home</h2>
-	
+<h2>Impressum</h2>
+<p>Marcus Hunger</p>
+<p>Lukas Haupt</p>
+<br>
+<p>FOM Münster</p>
+<br>
+<p>Haftungsausschluss bla bla </p>
 
 </jsp:body>
 </my:base>
