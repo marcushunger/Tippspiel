@@ -35,31 +35,37 @@ public class GroupsServlet extends HttpServlet {
 		Message m = new Message("g", "");
 		String action = request.getParameter("action");
 		User u = (User) request.getSession().getAttribute("user");
-		if (action.equals("actionanlegen")) {
-			String bezeichnung = request.getParameter("bez");
-			String sstudiengangId = request.getParameter("studiengang");
-			if (bezeichnung.isEmpty() || sstudiengangId.isEmpty()) {
-				m.setMessage("Bitte Gruppennamen und Studiengang angeben");
-				errors.add(m);
-				request.setAttribute("errors", errors);
-			} else {
-				Integer studiengangId = Integer.parseInt(sstudiengangId);
-				Studiengang studiengang = personDao.readStudiengang(studiengangId);
-				personDao.register(bezeichnung, u, studiengang);
+		try {
+			if (action.equals("actionanlegen")) {
+				String bezeichnung = request.getParameter("bez");
+				String sstudiengangId = request.getParameter("studiengang");
+				if (bezeichnung.isEmpty() || sstudiengangId.isEmpty()) {
+					m.setMessage("Bitte Gruppennamen und Studiengang angeben");
+					errors.add(m);
+					request.setAttribute("errors", errors);
+				} else {
+					Integer studiengangId = Integer.parseInt(sstudiengangId);
+					Studiengang studiengang = personDao.readStudiengang(studiengangId);
+					personDao.register(bezeichnung, u, studiengang);
+				}
+			} else if (action.equals("actionbeitritt")) {
+				String sgruppenId = request.getParameter("allegruppen");
+				if (sgruppenId.isEmpty()) {
+					m.setMessage("Bitte Gruppe auswählen");
+					errors.add(m);
+					request.setAttribute("errors", errors);
+				} else {
+					Integer gruppenId = Integer.parseInt(sgruppenId);
+					Gruppe gruppe = personDao.readGruppe(gruppenId);
+					personDao.registerGruppe(gruppe, u);
+				}
 			}
-		} else if (action.equals("actionbeitritt")) {
-			String sgruppenId = request.getParameter("allegruppen");
-			if (sgruppenId.isEmpty()) {
-				m.setMessage("Bitte Gruppe auswählen");
-				errors.add(m);
-				request.setAttribute("errors", errors);
-			} else {
-				Integer gruppenId = Integer.parseInt(sgruppenId);
-				Gruppe gruppe = personDao.readGruppe(gruppenId);
-				personDao.registerGruppe(gruppe, u);
-			}
+		} catch (Exception e) {
+			m.setMessage(e.getMessage());
+			errors.add(m);
+			request.setAttribute("errors", errors);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		response.sendRedirect(request.getContextPath() + "/groups.html");
+		request.getRequestDispatcher("/groups.html").forward(request, response);
 	}
 }

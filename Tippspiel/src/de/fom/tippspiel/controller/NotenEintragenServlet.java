@@ -38,34 +38,40 @@ public class NotenEintragenServlet extends HttpServlet {
 		Message message = new Message("n", "");
 		String action = request.getParameter("action");
 		User u = (User) request.getSession().getAttribute("user");
-		if (action.equals("actionreal")) {
-			String smodulId = request.getParameter("modulreal");
-			String snotereal = request.getParameter("notereal");
-			if (smodulId.isEmpty() || snotereal.isEmpty()) {
-				message.setMessage("Bitte gültige Werte eintragen");
-				errors.add(message);
-				request.setAttribute("errors", errors);
-			} else {
-				Integer modulId = Integer.parseInt(smodulId);
-				double notereal = Double.parseDouble(snotereal);
-				Usermodul um = usermodulDao.readUserModul(modulId);
-				usermodulDao.realEintragen(um, notereal);
+		try {
+			if (action.equals("actionreal")) {
+				String smodulId = request.getParameter("modulreal");
+				String snotereal = request.getParameter("notereal");
+				if (smodulId.isEmpty() || snotereal.isEmpty()) {
+					message.setMessage("Bitte gültige Werte eintragen");
+					errors.add(message);
+					request.setAttribute("errors", errors);
+				} else {
+					Integer modulId = Integer.parseInt(smodulId);
+					double notereal = Double.parseDouble(snotereal);
+					Usermodul um = usermodulDao.readUserModul(modulId);
+					usermodulDao.realEintragen(um, notereal);
+				}
+			} else if (action.equals("actiontipp")) {
+				String smodulId = request.getParameter("modultipp");
+				String snotereal = request.getParameter("notetipp");
+				if (smodulId.isEmpty() || snotereal.isEmpty()) {
+					message.setMessage("Bitte gültige Werte eintragen");
+					errors.add(message);
+					request.setAttribute("errors", errors);
+				} else {
+					Integer modulId = Integer.parseInt(smodulId);
+					double notetipp = Double.parseDouble(snotereal);
+					Modul m = usermodulDao.readModul(modulId);
+					usermodulDao.tippEintragen(m, notetipp, u);
+				}
 			}
-		} else if (action.equals("actiontipp")) {
-			String smodulId = request.getParameter("modultipp");
-			String snotereal = request.getParameter("notetipp");
-			if (smodulId.isEmpty() || snotereal.isEmpty()) {
-				message.setMessage("Bitte gültige Werte eintragen");
-				errors.add(message);
-				request.setAttribute("errors", errors);
-			} else {
-				Integer modulId = Integer.parseInt(smodulId);
-				double notetipp = Double.parseDouble(snotereal);
-				Modul m = usermodulDao.readModul(modulId);
-				usermodulDao.tippEintragen(m, notetipp, u);
-			}
+		} catch (Exception e) {
+			message.setMessage(e.getMessage());
+			errors.add(message);
+			request.setAttribute("errors", errors);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		response.sendRedirect(request.getContextPath() + "/noteeintragen.html");
+		request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
 	}
 }

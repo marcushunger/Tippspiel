@@ -49,26 +49,29 @@ public class ChangeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User u = (User) request.getSession().getAttribute("user");
+		try {
+			if (BCrypt.checkpw(request.getParameter("passphrasealt"), u.getPassphrase())) {
 
-		if (BCrypt.checkpw(request.getParameter("passphrasealt"), u.getPassphrase())) {
+				u = personDao.update(u, request.getParameter("usernamealt"), request.getParameter("emailalt"),
+						request.getParameter("passphraseneu"));
 
-			u = personDao.update(u, request.getParameter("usernamealt"), request.getParameter("emailalt"),
-					request.getParameter("passphraseneu"));
+				Message m = new Message("c", "");
+				errors.add(m);
+				request.setAttribute("errors", errors);
 
-			Message m = new Message("c", "");
+				return;
+			} else {
+				Message m = new Message("c", "Fehler beim ändern der Nutzerdaten");
+				errors.add(m);
+				request.setAttribute("errors", errors);
+
+			}
+		} catch (Exception e) {
+			Message m = new Message("", e.getMessage());
 			errors.add(m);
 			request.setAttribute("errors", errors);
-			request.getSession().setAttribute("user", personDao.read(u.getId()));
-			response.sendRedirect(request.getContextPath() + "/home.html");
-			return;
-		} else {
-			Message m = new Message("c", "Fehler beim ändern der Nutzerdaten");
-			errors.add(m);
-			request.setAttribute("errors", errors);
-			request.getSession().setAttribute("user", personDao.read(u.getId()));
-			// response.sendRedirect(request.getContextPath() + "/change.html");
-			request.getRequestDispatcher("/change.html").forward(request, response);
 		}
-
+		request.getSession().setAttribute("user", personDao.read(u.getId()));
+		request.getRequestDispatcher("/change.html").forward(request, response);
 	}
 }
