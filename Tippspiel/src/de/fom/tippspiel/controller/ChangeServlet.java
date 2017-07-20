@@ -70,6 +70,6 @@ public class ChangeServlet extends HttpServlet {
 			request.getRequestDispatcher("/change.html").forward(request, response);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		response.sendRedirect(request.getContextPath() + "/change.html");
+		request.getRequestDispatcher("/change.html").forward(request, response);
 	}
 }

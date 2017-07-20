@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -35,6 +36,9 @@ public class User {
 	// "fiduser", referencedColumnName = "id"), inverseJoinColumns =
 	// @JoinColumn(name = "fidmodul", referencedColumnName = "id"))
 	private ArrayList<Usermodul> module = new ArrayList<>();
+
+	@Transient
+	private int summe;
 
 	public User() {
 	}
@@ -134,6 +138,14 @@ public class User {
 
 	public void setModule(ArrayList<Usermodul> module) {
 		this.module = module;
+	}
+
+	public int getSumme() {
+		return summe;
+	}
+
+	public void setSumme(int summe) {
+		this.summe = summe;
 	}
 
 }

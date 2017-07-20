@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import de.fom.tippspiel.dao.PersonDao;
 import de.fom.tippspiel.model.ChangeForm;
 import de.fom.tippspiel.model.GroupsForm;
+import de.fom.tippspiel.model.HomeForm;
 import de.fom.tippspiel.model.NoteeintragenForm;
 import de.fom.tippspiel.persistence.User;
 import de.fom.tippspiel.view.Message;
@@ -41,6 +42,8 @@ public class DispatcherServlet extends HttpServlet {
 		switch (sa[0]) {
 		case "home":
 			forward = "home";
+			HomeForm hform = new HomeForm(request, us);
+			request.setAttribute("hform", hform);
 			break;
 		case "change":
 			checkMessage("c", request);

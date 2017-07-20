@@ -44,7 +44,7 @@ public class NoteeintragenForm {
 			if (usermodul.getNotereal() > 0) {
 				double diff = usermodul.getNotereal() - usermodul.getNotetipp();
 				double teiler = 0.3;
-				int abweichung = (int) (diff / teiler);
+				int abweichung = Math.abs((int) (diff / teiler));
 				usermodul.setAbweichung(abweichung);
 			}
 		}

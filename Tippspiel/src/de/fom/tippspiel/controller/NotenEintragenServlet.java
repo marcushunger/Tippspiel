@@ -79,6 +79,8 @@ public class NotenEintragenServlet extends HttpServlet {
 			request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
 		}
 		request.getSession().setAttribute("user", personDao.read(u.getId()));
-		response.sendRedirect(request.getContextPath() + "/noteeintragen.html");
+		request.getRequestDispatcher("/noteeintragen.html").forward(request, response);
+		// response.sendRedirect(request.getContextPath() +
+		// "/noteeintragen.html");
 	}
 }
