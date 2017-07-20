@@ -54,6 +54,13 @@
   <p></p>
 </div>
 
+<div>
+<p>Filter</p>
+<p>SecurityFilter</p>
+<p>Verweist bei keinem User auf die login.jsp zum einloggen</p>
+<p>ServletLoggingFilter</p>
+<p>Gibt die Servlet-Url und die Dauer des Servlets als Info-Log aus.</p>
+</div>
 <div class="container-fluid">
   <h4 class="margin">Datenbankmodell</h4>
   <img src="images/tippspiel.svg" alt="Datenbankmodel" width="700" height="450">

@@ -48,6 +48,16 @@
 		<filter-name>security</filter-name>
 		<url-pattern>/api/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+   <filter-name>ServletLoggingFilter</filter-name>
+   <filter-class>de.fom.tippspiel.controller.ServletLoggingFilter</filter-class>
+</filter>
+
+<filter-mapping>
+   <filter-name>ServletLoggingFilter</filter-name>
+   <url-pattern>/*</url-pattern>
+</filter-mapping>
 
 	<servlet>
 		<servlet-name>login</servlet-name>
