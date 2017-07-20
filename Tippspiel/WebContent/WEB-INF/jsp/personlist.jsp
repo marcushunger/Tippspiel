@@ -9,7 +9,6 @@
 			<tr>		
 				<th>eMail</th>
 				<th>Username</th>
-				<th>Punktstand</th>
 			</tr>
 		</thead>
 		<tbody>
