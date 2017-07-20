@@ -15,26 +15,24 @@
 <br>	
 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe auswählen">
 </form>
-<c:forEach items="${hform.listgrupen}" var="g">
-	<h2>${g.bezeichnung}</h2>
+
+	<h2>Hier gruppenüberschrift</h2>
 	<table class="table table-hover">
 		<thead>
 			<tr>		
 				<th>eMail</th>
 				<th>Username</th>
-				<th>Punktzahl</th>
+				<th>Abweichungen</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${g.user}" var="p">
-				<tr>
-					<td>${p.email}</td>
-					<td>${p.username}</td>
-					<td>${p.summe}</td>
-				</tr>
+			<c:forEach items="${hform.listgrupen.user}" var="g">
+			<td>${g.id}</td>
+			<td>${g.email}</td>
+			<td>${g.summe}</td>
 			</c:forEach>
 		</tbody>
 		</table>
-</c:forEach>
+
 </jsp:body>
 </my:base>
