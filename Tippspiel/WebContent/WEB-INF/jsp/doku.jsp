@@ -49,11 +49,13 @@
 
 <div class="container-fluid">
   <h4 class="margin">Datenbankmodell</h4>
-  <img src="/images/tippspiel.svg" alt="Datenbankmodel" width="304" height="236">
+  <img src="/images/tippspiel.svg" alt="Datenbankmodel" width="700" height="450">
 </div>
 
 <div class="container-fluid">
   <h4 class="margin">Jars/ Apis</h4>
+  <p>https://github.com/djmdjm/jBCrypt</p>
+  <p>https://mvnrepository.com/artifact/org.mindrot/jbcrypt/0.4</p>
 </div>
 
 </jsp:body>

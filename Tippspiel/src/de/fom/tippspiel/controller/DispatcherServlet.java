@@ -40,6 +40,13 @@ public class DispatcherServlet extends HttpServlet {
 		String forward = null;
 		User us = (User) request.getSession().getAttribute("user");
 		switch (sa[0]) {
+		case "homegruppeuser":
+			forward = "home";
+			String gruppe = request.getParameter("gruppemitusern");
+			System.out.println("Lukas: " + gruppe);
+			HomeForm hformmitauswahlgruppe = new HomeForm(request, us);
+			request.setAttribute("hformmitauswahlgruppe", hformmitauswahlgruppe);
+			break;
 		case "home":
 			forward = "home";
 			HomeForm hform = new HomeForm(request, us);

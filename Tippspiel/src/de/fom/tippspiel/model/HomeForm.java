@@ -38,6 +38,7 @@ public class HomeForm {
 					}
 				}
 				user2.setSumme(abweichungSumme);
+
 			}
 			listgrupen.add(gruppe);
 		}
