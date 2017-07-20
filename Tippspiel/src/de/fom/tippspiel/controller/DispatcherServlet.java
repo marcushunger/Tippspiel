@@ -1,6 +1,8 @@
 package de.fom.tippspiel.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletConfig;
@@ -21,6 +23,7 @@ import de.fom.tippspiel.view.Message;
 
 public class DispatcherServlet extends HttpServlet {
 
+	List<Message> errors = new ArrayList<Message>();
 	@Inject
 	private PersonDao personDao;
 
@@ -42,10 +45,17 @@ public class DispatcherServlet extends HttpServlet {
 		switch (sa[0]) {
 		case "homegruppeuser":
 			forward = "home";
+			errors.clear();
 			String gruppe = request.getParameter("gruppemitusern");
-			System.out.println("Lukas: " + gruppe);
-			HomeForm hformmitauswahlgruppe = new HomeForm(request, us);
-			request.setAttribute("hformmitauswahlgruppe", hformmitauswahlgruppe);
+			if (gruppe.isEmpty()) {
+				Message m = new Message("trans", "Bitte Gruppe auswählen");
+				errors.add(m);
+				request.setAttribute("errors", errors);
+				request.getRequestDispatcher("/home.html").forward(request, response);
+			}
+			request.setAttribute("errors", errors);
+			HomeForm hformmitauswahlgruppe = new HomeForm(request, us, personDao.readGruppe(Integer.parseInt(gruppe)));
+			request.setAttribute("hform", hformmitauswahlgruppe);
 			break;
 		case "home":
 			forward = "home";

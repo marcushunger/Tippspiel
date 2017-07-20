@@ -2,6 +2,10 @@
 <%@taglib prefix="my" tagdir="/WEB-INF/tags" %> 
 <my:base>
 <jsp:body>
+
+	<c:forEach items="${errors}" var="e">
+	    <div class="alert alert-danger">${e.message }</div>
+	</c:forEach>
 	
 <h3>Home</h3>
 <form method="post" action="homegruppeuser.html">
@@ -16,7 +20,7 @@
 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Gruppe auswählen">
 </form>
 
-	<h2>Hier gruppenüberschrift</h2>
+	<h2>${hform.auswahlgruppe.bezeichnung}</h2>
 	<table class="table table-hover">
 		<thead>
 			<tr>		
@@ -26,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${hform.listgrupen.user}" var="g">
+			<c:forEach items="${hform.listuser}" var="g">
 			<td>${g.id}</td>
 			<td>${g.email}</td>
 			<td>${g.summe}</td>

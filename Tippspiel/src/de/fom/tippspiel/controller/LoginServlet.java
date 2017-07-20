@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		errors.clear();
 		try {
 			User user = personDao.login(request.getParameter("j_username"), request.getParameter("j_password"));
 			if (user != null) {
