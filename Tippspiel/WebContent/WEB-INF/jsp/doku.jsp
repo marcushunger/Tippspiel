@@ -10,7 +10,7 @@
   <p>Wer kennt es nicht? Ein Kumpel beklagt sich das die Klausur zu schwer war und er fast nichts wusste. Und am Ende hat er doch wieder eine Note besser 2.0<br>
   Hier setzt das Tippspiel an:
   Es können in Gruppen die Klausurnoten nach geschriebener Klausur getippt werden. Nach Rückgabe der Note wird dann für jede Abweichung ein vorher festgelegter Betrag in eine Gruppenkasse 
-  eingezahlt oder eine "Währung".
+  eingezahlt oder eine andere "Währung" wird unter den Kommilitonen vereinbart.
   </p>
   </div>
 </div>
@@ -45,15 +45,23 @@
 <!-- Technische Doku -->
 <div class="container-fluid">
   <h4 class="margin">Technisch</h4>
+  <p>JPA um an die Daten der MySQL-DB zu kommen.</p>
+  <p>Beziehungen über @Annotations</p>
+  <p>Achtung: Hat eine Auflösungstabelle einer m:n-Beziehung zusätzliche Spalten, kann dies nicht über @Manytomany
+  <p>aufgelöst werden. Die Tabelle wird als eigene Entität dargestellt.</p>
+  <p>JSP + Bootstrap für die Oberfläche</p>
+  <p>Java Servlets und Filter für die Anwendung</p>
+  <p></p>
 </div>
 
 <div class="container-fluid">
   <h4 class="margin">Datenbankmodell</h4>
-  <img src="/images/tippspiel.svg" alt="Datenbankmodel" width="700" height="450">
+  <img src="images/tippspiel.svg" alt="Datenbankmodel" width="700" height="450">
 </div>
 
 <div class="container-fluid">
-  <h4 class="margin">Jars/ Apis</h4>
+  <h4 class="margin">Besondere Jars/ Apis</h4>
+  <p>Zur Passwortverschlüsselung: BCrypt</p>
   <p>https://github.com/djmdjm/jBCrypt</p>
   <p>https://mvnrepository.com/artifact/org.mindrot/jbcrypt/0.4</p>
 </div>
