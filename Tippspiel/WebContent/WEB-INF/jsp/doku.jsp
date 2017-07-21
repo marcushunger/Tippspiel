@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="my" tagdir="/WEB-INF/tags" %> 
+<%@ page contentType="text/html; charset=UTF-8" %>
 <my:base>
 <jsp:body>
 
@@ -7,10 +8,13 @@
 <div class="container-fluid">
   <h3 class="margin">Tippspiel</h3>
   <div>
-  <p>Wer kennt es nicht? Ein Kumpel beklagt sich das die Klausur zu schwer war und er fast nichts wusste. Und am Ende hat er doch wieder eine Note besser 2.0<br>
-  Hier setzt das Tippspiel an:
-  Es können in Gruppen die Klausurnoten nach geschriebener Klausur getippt werden. Nach Rückgabe der Note wird dann für jede Abweichung ein vorher festgelegter Betrag in eine Gruppenkasse 
-  eingezahlt oder eine andere "Währung" wird unter den Kommilitonen vereinbart.
+  <p>Wer kennt es nicht? Ein Kumpel beklagt sich das die Klausur zu schwer war und er fast nichts wusste. Und am Ende hat er doch wieder eine Note besser 2.0
+Hier setzt das Tippspiel an:
+WÃ¤hrend der vergangenen Semester im Studiengang Wirtschaftsinformatik an der FOM haben einige unsere Kommilitonen angefangen Tipps auf Ihrer geschriebenen Mo-dulklausuren abzugeben. In unserer Gruppe wurden diese Tipps meist direkt nach dem Schreiben der Klausur schriftlich durch eine Person festgehalten. Nach Bekanntgabe der Klausurnoten wurde eine Abweichung zwischen Tipp-Note und der eigentlichen Klau-surnote errechnet. Eine hÃ¶here Abweichung hatte ein hÃ¶heres vorher festgelegtes BuÃŸgeld zur Folge.
+Leider ist es oft nicht mÃ¶glich alle Tipps direkt zu erfassen. Manchmal fehlt ein Kom-militone oder der SchriftfÃ¼hrer, sodass nicht alle Daten erfasst werden. Zudem werden die Tipps immer mÃ¼ndlich abgegeben und im Nachhinein abermals angepasst.  
+Zielsetzung ist die Umsetzung eines Webprojektes zur UnterstÃ¼tzung eines Klausurno-ten Tippspiels fÃ¼r mehr Transparenz und Bestimmtheit bei der Tippabgabe.
+Die Arbeit besteht zum Teil aus dieser technischen Dokumentation sowie dem Webprojekt â€Tippspielâ€œ als War-File. Ein SQL fÃ¼r eine grundlegende Datenbasis wurde dem Projekt beigefÃ¼gt.
+
   </p>
   </div>
 </div>
@@ -19,25 +23,18 @@
 <div class="container-fluid">
   <h4 class="margin">Fachliche Anforderung</h4>
   <h5>Registrierung</h5>
-  Es soll die Möglichkeit geben sich für das Tippspiel zu registrieren. Die Registrierung soll dabei nur die
-  Felder Username, eMail und Passwort benötigen. Zum Login soll dabei die eMail und das Passwort dienen. 
-  Nach der Eingabe kann der User direkt loslegen.
+ Es soll die MÃ¶glichkeit geben werden, sich fÃ¼r das Tippspiel zu registrieren. Die Regist-rierung soll dabei nur die Felder Username, eMail und Passwort benÃ¶tigen. Zum Login werden die eMail und das Passwort abgefragt. Nach der Eingabe der Login Daten oder einer erfolgreichen Registrierung kann der User direkt loslegen.
   <h5>Userlist</h5>
   Es werden alle bislang registrierten User angezeigt. In der Tabelle werden eMail und Username aufgelistet.
   <h5>Gruppen</h5>
-  Der Nutzer soll neue Gruppen anlegen können. Dabei kann der Gruppenname frei gewählt (*muss einmalig sein) werden. 
-  Außerdem wird zu jeder Gruppe ein Studiengang gewählt.
-  <br>
-  Die Alternative ist, der Beitritt einer schon bestehenden Gruppe. Hier werden in einer Combobox alle verfügbaren Gruppen 
-  angezeigt.
-  <br>
+ Der Nutzer soll neue Gruppen anlegen kÃ¶nnen. Dabei kann der Gruppenname frei ge-wÃ¤hlt (*muss einmalig sein) werden. Zudem muss fÃ¼r jede Gruppe ein Studiengang ausgewÃ¤hlt werden. Die Alternative ist der Beitritt einer schon bestehenden Gruppe. Hier werden in einer Combobox alle verfÃ¼gbaren Gruppen angezeigt.
   <h5>Noten</h5>
-  Unter dem Reiter Noten können die Notentipps und die real geschriebenen Noten eingetragen werden. Die Auswahl geschieht 
-  jeweils über das Modul und die Note.
-  Auch werden alle eingegebenen Noten in einer Tabelle angezeigt.
+ Unter dem Reiter Noten kÃ¶nnen die Notentipps und die real geschriebenen Noten einge-tragen werden. Die Auswahl geschieht jeweils Ã¼ber das Modul und die Note. Auch wer-den alle eingegebenen Noten in einer Tabelle angezeigt. Sind sowohl der Tipp und die eigentliche Note eingetragen worden, wird zudem die Abweichung angezeigt.
   <br>
-  <h5>Daten ändern</h5>
-  Unter dem Punkt "Daten ändern" ist es möglich seine Userdaten zu ändern.
+  <h5>Daten Ã¤ndern</h5>
+ Unter dem Punkt "Daten Ã¤ndern" ist es mÃ¶glich seine Userdaten zu Ã¤ndern.
+ <h5>Fehlerbehandlung</h5>
+ Bei Nicht- oder Falscheingabe soll dem Anwender in der entsprechenden View eine Fehlermeldung angezeigt werden. Diese Fehlermeldung erhÃ¤lt einen roten Hintergrund.
 </div>
 
 
@@ -45,12 +42,12 @@
 <!-- Technische Doku -->
 <div class="container-fluid">
   <h4 class="margin">Technisch</h4>
-  <p>JPA um an die Daten der MySQL-DB zu kommen.</p>
-  <p>Beziehungen über @Annotations</p>
-  <p>Achtung: Hat eine Auflösungstabelle einer m:n-Beziehung zusätzliche Spalten, kann dies nicht über @Manytomany
-  <p>aufgelöst werden. Die Tabelle wird als eigene Entität dargestellt.</p>
-  <p>JSP + Bootstrap für die Oberfläche</p>
-  <p>Java Servlets und Filter für die Anwendung</p>
+  <p>Datenbank: MySQL</p>
+  <p>Anwendung: Java</p>
+  <p>Designpattern: MVC</p>
+  <p>OberflÃ¤che: Java Server Pages (jsp) + Bootstrap</p>
+  <p>Building: Maven</p>
+  <p>Repository: github</p>
   <p></p>
 </div>
 
@@ -68,7 +65,7 @@
 
 <div class="container-fluid">
   <h4 class="margin">Besondere Jars/ Apis</h4>
-  <p>Zur Passwortverschlüsselung: BCrypt</p>
+  <p>Zur PasswortverschlÃ¼sselung: BCrypt</p>
   <p>https://github.com/djmdjm/jBCrypt</p>
   <p>https://mvnrepository.com/artifact/org.mindrot/jbcrypt/0.4</p>
 </div>
